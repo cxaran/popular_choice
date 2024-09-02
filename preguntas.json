@@ -1,0 +1,3468 @@
+[
+    {
+        "tema": "comida",
+        "pregunta": "¿Cuál es una fruta muy común?",
+        "respuestas": [
+            {
+                "respuesta": "manzana",
+                "pts": 40
+            },
+            {
+                "respuesta": "pera",
+                "pts": 30
+            },
+            {
+                "respuesta": "naranja",
+                "pts": 20
+            },
+            {
+                "respuesta": "sandía",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "animales",
+        "pregunta": "¿Cuál es una mascota común?",
+        "respuestas": [
+            {
+                "respuesta": "perro",
+                "pts": 50
+            },
+            {
+                "respuesta": "gato",
+                "pts": 40
+            },
+            {
+                "respuesta": "pez",
+                "pts": 30
+            },
+            {
+                "respuesta": "hamster",
+                "pts": 20
+            },
+            {
+                "respuesta": "loro",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "comida",
+        "pregunta": "¿Cuál es una comida rápida popular?",
+        "respuestas": [
+            {
+                "respuesta": "pizza",
+                "pts": 40
+            },
+            {
+                "respuesta": "hamburguesa",
+                "pts": 35
+            },
+            {
+                "respuesta": "tacos",
+                "pts": 20
+            },
+            {
+                "respuesta": "hot dog",
+                "pts": 15
+            }
+        ]
+    },
+    {
+        "tema": "tecnología",
+        "pregunta": "¿Cuál es una marca de teléfonos populares?",
+        "respuestas": [
+            {
+                "respuesta": "Apple",
+                "pts": 50
+            },
+            {
+                "respuesta": "Samsung",
+                "pts": 40
+            },
+            {
+                "respuesta": "Huawei",
+                "pts": 30
+            },
+            {
+                "respuesta": "Xiaomi",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "películas",
+        "pregunta": "¿Cuál es un género de películas popular?",
+        "respuestas": [
+            {
+                "respuesta": "acción",
+                "pts": 40
+            },
+            {
+                "respuesta": "comedia",
+                "pts": 30
+            },
+            {
+                "respuesta": "drama",
+                "pts": 20
+            },
+            {
+                "respuesta": "terror",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "deportes",
+        "pregunta": "¿Cuál es un deporte popular?",
+        "respuestas": [
+            {
+                "respuesta": "fútbol",
+                "pts": 50
+            },
+            {
+                "respuesta": "baloncesto",
+                "pts": 30
+            },
+            {
+                "respuesta": "tenis",
+                "pts": 15
+            },
+            {
+                "respuesta": "natación",
+                "pts": 5
+            }
+        ]
+    },
+    {
+        "tema": "música",
+        "pregunta": "¿Cuál es un género musical popular?",
+        "respuestas": [
+            {
+                "respuesta": "pop",
+                "pts": 40
+            },
+            {
+                "respuesta": "rock",
+                "pts": 30
+            },
+            {
+                "respuesta": "reguetón",
+                "pts": 20
+            },
+            {
+                "respuesta": "jazz",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "comida",
+        "pregunta": "¿Cuál es un ingrediente común en las ensaladas?",
+        "respuestas": [
+            {
+                "respuesta": "lechuga",
+                "pts": 40
+            },
+            {
+                "respuesta": "tomate",
+                "pts": 30
+            },
+            {
+                "respuesta": "pepino",
+                "pts": 20
+            },
+            {
+                "respuesta": "zanahoria",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "animales",
+        "pregunta": "¿Cuál es un animal que se encuentra en una granja?",
+        "respuestas": [
+            {
+                "respuesta": "vaca",
+                "pts": 50
+            },
+            {
+                "respuesta": "cerdo",
+                "pts": 30
+            },
+            {
+                "respuesta": "pollo",
+                "pts": 15
+            },
+            {
+                "respuesta": "oveja",
+                "pts": 5
+            }
+        ]
+    },
+    {
+        "tema": "comida",
+        "pregunta": "¿Cuál es un sabor de helado popular?",
+        "respuestas": [
+            {
+                "respuesta": "chocolate",
+                "pts": 40
+            },
+            {
+                "respuesta": "vainilla",
+                "pts": 35
+            },
+            {
+                "respuesta": "fresa",
+                "pts": 20
+            },
+            {
+                "respuesta": "mango",
+                "pts": 5
+            }
+        ]
+    },
+    {
+        "tema": "tecnología",
+        "pregunta": "¿Cuál es una red social popular?",
+        "respuestas": [
+            {
+                "respuesta": "Facebook",
+                "pts": 40
+            },
+            {
+                "respuesta": "Instagram",
+                "pts": 30
+            },
+            {
+                "respuesta": "Twitter",
+                "pts": 20
+            },
+            {
+                "respuesta": "TikTok",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "viajes",
+        "pregunta": "¿Cuál es un destino turístico famoso?",
+        "respuestas": [
+            {
+                "respuesta": "París",
+                "pts": 50
+            },
+            {
+                "respuesta": "Nueva York",
+                "pts": 40
+            },
+            {
+                "respuesta": "Roma",
+                "pts": 30
+            },
+            {
+                "respuesta": "Tokio",
+                "pts": 20
+            },
+            {
+                "respuesta": "Londres",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "deportes",
+        "pregunta": "¿Cuál es un equipo de fútbol famoso?",
+        "respuestas": [
+            {
+                "respuesta": "Real Madrid",
+                "pts": 50
+            },
+            {
+                "respuesta": "Barcelona",
+                "pts": 40
+            },
+            {
+                "respuesta": "Manchester United",
+                "pts": 30
+            },
+            {
+                "respuesta": "Bayern Múnich",
+                "pts": 20
+            },
+            {
+                "respuesta": "Juventus",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "comida",
+        "pregunta": "¿Cuál es un tipo de pasta común?",
+        "respuestas": [
+            {
+                "respuesta": "espagueti",
+                "pts": 40
+            },
+            {
+                "respuesta": "macarrones",
+                "pts": 30
+            },
+            {
+                "respuesta": "fettuccine",
+                "pts": 20
+            },
+            {
+                "respuesta": "lasaña",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "música",
+        "pregunta": "¿Cuál es un instrumento musical común?",
+        "respuestas": [
+            {
+                "respuesta": "guitarra",
+                "pts": 50
+            },
+            {
+                "respuesta": "piano",
+                "pts": 40
+            },
+            {
+                "respuesta": "violín",
+                "pts": 30
+            },
+            {
+                "respuesta": "batería",
+                "pts": 20
+            },
+            {
+                "respuesta": "flauta",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "cine",
+        "pregunta": "¿Cuál es un director de cine famoso?",
+        "respuestas": [
+            {
+                "respuesta": "Steven Spielberg",
+                "pts": 50
+            },
+            {
+                "respuesta": "Christopher Nolan",
+                "pts": 40
+            },
+            {
+                "respuesta": "Martin Scorsese",
+                "pts": 30
+            },
+            {
+                "respuesta": "Quentin Tarantino",
+                "pts": 20
+            },
+            {
+                "respuesta": "James Cameron",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "tecnología",
+        "pregunta": "¿Cuál es un sistema operativo común?",
+        "respuestas": [
+            {
+                "respuesta": "Windows",
+                "pts": 50
+            },
+            {
+                "respuesta": "macOS",
+                "pts": 30
+            },
+            {
+                "respuesta": "Linux",
+                "pts": 20
+            },
+            {
+                "respuesta": "Android",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "educación",
+        "pregunta": "¿Cuál es una materia escolar común?",
+        "respuestas": [
+            {
+                "respuesta": "matemáticas",
+                "pts": 40
+            },
+            {
+                "respuesta": "ciencias",
+                "pts": 30
+            },
+            {
+                "respuesta": "historia",
+                "pts": 20
+            },
+            {
+                "respuesta": "literatura",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "naturaleza",
+        "pregunta": "¿Cuál es un tipo de árbol común?",
+        "respuestas": [
+            {
+                "respuesta": "roble",
+                "pts": 40
+            },
+            {
+                "respuesta": "pino",
+                "pts": 30
+            },
+            {
+                "respuesta": "arce",
+                "pts": 20
+            },
+            {
+                "respuesta": "abeto",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "animales",
+        "pregunta": "¿Cuál es un animal marino común?",
+        "respuestas": [
+            {
+                "respuesta": "delfín",
+                "pts": 40
+            },
+            {
+                "respuesta": "tiburón",
+                "pts": 30
+            },
+            {
+                "respuesta": "ballena",
+                "pts": 20
+            },
+            {
+                "respuesta": "pulpo",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "comida",
+        "pregunta": "¿Cuál es un platillo típico mexicano?",
+        "respuestas": [
+            {
+                "respuesta": "tacos",
+                "pts": 50
+            },
+            {
+                "respuesta": "enchiladas",
+                "pts": 40
+            },
+            {
+                "respuesta": "tamales",
+                "pts": 30
+            },
+            {
+                "respuesta": "pozole",
+                "pts": 20
+            },
+            {
+                "respuesta": "chilaquiles",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "música",
+        "pregunta": "¿Cuál es un cantante famoso de pop?",
+        "respuestas": [
+            {
+                "respuesta": "Michael Jackson",
+                "pts": 50
+            },
+            {
+                "respuesta": "Madonna",
+                "pts": 40
+            },
+            {
+                "respuesta": "Beyoncé",
+                "pts": 30
+            },
+            {
+                "respuesta": "Justin Bieber",
+                "pts": 20
+            },
+            {
+                "respuesta": "Taylor Swift",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "deportes",
+        "pregunta": "¿Cuál es un deporte que se practica en los Juegos Olímpicos?",
+        "respuestas": [
+            {
+                "respuesta": "atletismo",
+                "pts": 40
+            },
+            {
+                "respuesta": "natación",
+                "pts": 30
+            },
+            {
+                "respuesta": "gimnasia",
+                "pts": 20
+            },
+            {
+                "respuesta": "voleibol",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "cine",
+        "pregunta": "¿Cuál es un superhéroe famoso?",
+        "respuestas": [
+            {
+                "respuesta": "Superman",
+                "pts": 40
+            },
+            {
+                "respuesta": "Batman",
+                "pts": 35
+            },
+            {
+                "respuesta": "Spiderman",
+                "pts": 25
+            },
+            {
+                "respuesta": "Iron Man",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "naturaleza",
+        "pregunta": "¿Cuál es un planeta del sistema solar?",
+        "respuestas": [
+            {
+                "respuesta": "Tierra",
+                "pts": 50
+            },
+            {
+                "respuesta": "Marte",
+                "pts": 40
+            },
+            {
+                "respuesta": "Júpiter",
+                "pts": 30
+            },
+            {
+                "respuesta": "Saturno",
+                "pts": 20
+            },
+            {
+                "respuesta": "Venus",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "música",
+        "pregunta": "¿Cuál es una banda de rock famosa?",
+        "respuestas": [
+            {
+                "respuesta": "The Beatles",
+                "pts": 50
+            },
+            {
+                "respuesta": "The Rolling Stones",
+                "pts": 40
+            },
+            {
+                "respuesta": "Led Zeppelin",
+                "pts": 30
+            },
+            {
+                "respuesta": "Queen",
+                "pts": 20
+            },
+            {
+                "respuesta": "Pink Floyd",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "comida",
+        "pregunta": "¿Cuál es un postre común?",
+        "respuestas": [
+            {
+                "respuesta": "pastel",
+                "pts": 40
+            },
+            {
+                "respuesta": "helado",
+                "pts": 35
+            },
+            {
+                "respuesta": "flan",
+                "pts": 20
+            },
+            {
+                "respuesta": "gelatina",
+                "pts": 15
+            }
+        ]
+    },
+    {
+        "tema": "tecnología",
+        "pregunta": "¿Cuál es una empresa de tecnología conocida?",
+        "respuestas": [
+            {
+                "respuesta": "Apple",
+                "pts": 50
+            },
+            {
+                "respuesta": "Google",
+                "pts": 40
+            },
+            {
+                "respuesta": "Microsoft",
+                "pts": 30
+            },
+            {
+                "respuesta": "Amazon",
+                "pts": 20
+            },
+            {
+                "respuesta": "Samsung",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "naturaleza",
+        "pregunta": "¿Cuál es un fenómeno meteorológico común?",
+        "respuestas": [
+            {
+                "respuesta": "lluvia",
+                "pts": 40
+            },
+            {
+                "respuesta": "nieve",
+                "pts": 30
+            },
+            {
+                "respuesta": "tormenta",
+                "pts": 20
+            },
+            {
+                "respuesta": "viento",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "deportes",
+        "pregunta": "¿Cuál es un evento deportivo internacional famoso?",
+        "respuestas": [
+            {
+                "respuesta": "Copa Mundial de la FIFA",
+                "pts": 50
+            },
+            {
+                "respuesta": "Juegos Olímpicos",
+                "pts": 40
+            },
+            {
+                "respuesta": "Super Bowl",
+                "pts": 30
+            },
+            {
+                "respuesta": "Tour de Francia",
+                "pts": 20
+            },
+            {
+                "respuesta": "Wimbledon",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "educación",
+        "pregunta": "¿Cuál es una universidad famosa?",
+        "respuestas": [
+            {
+                "respuesta": "Harvard",
+                "pts": 50
+            },
+            {
+                "respuesta": "MIT",
+                "pts": 40
+            },
+            {
+                "respuesta": "Oxford",
+                "pts": 30
+            },
+            {
+                "respuesta": "Cambridge",
+                "pts": 20
+            },
+            {
+                "respuesta": "Stanford",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "animales",
+        "pregunta": "¿Cuál es un animal que vive en la selva?",
+        "respuestas": [
+            {
+                "respuesta": "tigre",
+                "pts": 40
+            },
+            {
+                "respuesta": "mono",
+                "pts": 30
+            },
+            {
+                "respuesta": "serpiente",
+                "pts": 20
+            },
+            {
+                "respuesta": "elefante",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "comida",
+        "pregunta": "¿Cuál es un tipo de pan común?",
+        "respuestas": [
+            {
+                "respuesta": "baguette",
+                "pts": 40
+            },
+            {
+                "respuesta": "bolillo",
+                "pts": 30
+            },
+            {
+                "respuesta": "pan de molde",
+                "pts": 20
+            },
+            {
+                "respuesta": "pan integral",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "música",
+        "pregunta": "¿Cuál es un cantante famoso de rock?",
+        "respuestas": [
+            {
+                "respuesta": "Elvis Presley",
+                "pts": 50
+            },
+            {
+                "respuesta": "Freddie Mercury",
+                "pts": 40
+            },
+            {
+                "respuesta": "Mick Jagger",
+                "pts": 30
+            },
+            {
+                "respuesta": "Kurt Cobain",
+                "pts": 20
+            },
+            {
+                "respuesta": "David Bowie",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "tecnología",
+        "pregunta": "¿Cuál es una app de mensajería popular?",
+        "respuestas": [
+            {
+                "respuesta": "WhatsApp",
+                "pts": 50
+            },
+            {
+                "respuesta": "Messenger",
+                "pts": 40
+            },
+            {
+                "respuesta": "Telegram",
+                "pts": 30
+            },
+            {
+                "respuesta": "WeChat",
+                "pts": 20
+            },
+            {
+                "respuesta": "Signal",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "cine",
+        "pregunta": "¿Cuál es una película de Disney famosa?",
+        "respuestas": [
+            {
+                "respuesta": "El Rey León",
+                "pts": 50
+            },
+            {
+                "respuesta": "Aladdín",
+                "pts": 40
+            },
+            {
+                "respuesta": "La Bella y la Bestia",
+                "pts": 30
+            },
+            {
+                "respuesta": "Frozen",
+                "pts": 20
+            },
+            {
+                "respuesta": "Cenicienta",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "naturaleza",
+        "pregunta": "¿Cuál es un río famoso?",
+        "respuestas": [
+            {
+                "respuesta": "Nilo",
+                "pts": 40
+            },
+            {
+                "respuesta": "Amazonas",
+                "pts": 35
+            },
+            {
+                "respuesta": "Misisipi",
+                "pts": 20
+            },
+            {
+                "respuesta": "Danubio",
+                "pts": 15
+            }
+        ]
+    },
+    {
+        "tema": "deportes",
+        "pregunta": "¿Cuál es un deporte de invierno?",
+        "respuestas": [
+            {
+                "respuesta": "esquí",
+                "pts": 40
+            },
+            {
+                "respuesta": "snowboard",
+                "pts": 30
+            },
+            {
+                "respuesta": "patinaje sobre hielo",
+                "pts": 20
+            },
+            {
+                "respuesta": "hockey sobre hielo",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "comida",
+        "pregunta": "¿Cuál es una bebida alcohólica popular?",
+        "respuestas": [
+            {
+                "respuesta": "cerveza",
+                "pts": 40
+            },
+            {
+                "respuesta": "vino",
+                "pts": 30
+            },
+            {
+                "respuesta": "whisky",
+                "pts": 20
+            },
+            {
+                "respuesta": "tequila",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "animales",
+        "pregunta": "¿Cuál es un animal que vuela?",
+        "respuestas": [
+            {
+                "respuesta": "águila",
+                "pts": 40
+            },
+            {
+                "respuesta": "halcón",
+                "pts": 30
+            },
+            {
+                "respuesta": "loro",
+                "pts": 20
+            },
+            {
+                "respuesta": "paloma",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "música",
+        "pregunta": "¿Cuál es un género de música latina popular?",
+        "respuestas": [
+            {
+                "respuesta": "reguetón",
+                "pts": 40
+            },
+            {
+                "respuesta": "salsa",
+                "pts": 30
+            },
+            {
+                "respuesta": "bachata",
+                "pts": 20
+            },
+            {
+                "respuesta": "merengue",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "tecnología",
+        "pregunta": "¿Cuál es un motor de búsqueda popular?",
+        "respuestas": [
+            {
+                "respuesta": "Google",
+                "pts": 50
+            },
+            {
+                "respuesta": "Bing",
+                "pts": 30
+            },
+            {
+                "respuesta": "Yahoo",
+                "pts": 20
+            },
+            {
+                "respuesta": "DuckDuckGo",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "educación",
+        "pregunta": "¿Cuál es una profesión común?",
+        "respuestas": [
+            {
+                "respuesta": "maestro",
+                "pts": 40
+            },
+            {
+                "respuesta": "doctor",
+                "pts": 35
+            },
+            {
+                "respuesta": "ingeniero",
+                "pts": 20
+            },
+            {
+                "respuesta": "abogado",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "naturaleza",
+        "pregunta": "¿Cuál es un océano del mundo?",
+        "respuestas": [
+            {
+                "respuesta": "Atlántico",
+                "pts": 50
+            },
+            {
+                "respuesta": "Pacífico",
+                "pts": 40
+            },
+            {
+                "respuesta": "Índico",
+                "pts": 30
+            },
+            {
+                "respuesta": "Ártico",
+                "pts": 20
+            },
+            {
+                "respuesta": "Antártico",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "deportes",
+        "pregunta": "¿Cuál es un equipo de baloncesto famoso?",
+        "respuestas": [
+            {
+                "respuesta": "Los Angeles Lakers",
+                "pts": 50
+            },
+            {
+                "respuesta": "Chicago Bulls",
+                "pts": 40
+            },
+            {
+                "respuesta": "Boston Celtics",
+                "pts": 30
+            },
+            {
+                "respuesta": "Golden State Warriors",
+                "pts": 20
+            },
+            {
+                "respuesta": "Miami Heat",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "música",
+        "pregunta": "¿Cuál es una banda de pop famosa?",
+        "respuestas": [
+            {
+                "respuesta": "The Beatles",
+                "pts": 50
+            },
+            {
+                "respuesta": "Backstreet Boys",
+                "pts": 40
+            },
+            {
+                "respuesta": "One Direction",
+                "pts": 30
+            },
+            {
+                "respuesta": "NSYNC",
+                "pts": 20
+            },
+            {
+                "respuesta": "The Jackson 5",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "tecnología",
+        "pregunta": "¿Cuál es un tipo de archivo común?",
+        "respuestas": [
+            {
+                "respuesta": "PDF",
+                "pts": 40
+            },
+            {
+                "respuesta": "JPEG",
+                "pts": 30
+            },
+            {
+                "respuesta": "MP3",
+                "pts": 20
+            },
+            {
+                "respuesta": "DOC",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "cine",
+        "pregunta": "¿Cuál es una película de ciencia ficción famosa?",
+        "respuestas": [
+            {
+                "respuesta": "Star Wars",
+                "pts": 50
+            },
+            {
+                "respuesta": "Blade Runner",
+                "pts": 40
+            },
+            {
+                "respuesta": "Matrix",
+                "pts": 30
+            },
+            {
+                "respuesta": "E.T.",
+                "pts": 20
+            },
+            {
+                "respuesta": "Interstellar",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "naturaleza",
+        "pregunta": "¿Cuál es un desierto famoso?",
+        "respuestas": [
+            {
+                "respuesta": "Sahara",
+                "pts": 50
+            },
+            {
+                "respuesta": "Gobi",
+                "pts": 30
+            },
+            {
+                "respuesta": "Atacama",
+                "pts": 20
+            },
+            {
+                "respuesta": "Kalahari",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "deportes",
+        "pregunta": "¿Cuál es un deporte acuático popular?",
+        "respuestas": [
+            {
+                "respuesta": "natación",
+                "pts": 40
+            },
+            {
+                "respuesta": "surf",
+                "pts": 30
+            },
+            {
+                "respuesta": "waterpolo",
+                "pts": 20
+            },
+            {
+                "respuesta": "buceo",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "comida",
+        "pregunta": "¿Cuál es un tipo de queso común?",
+        "respuestas": [
+            {
+                "respuesta": "cheddar",
+                "pts": 40
+            },
+            {
+                "respuesta": "mozzarella",
+                "pts": 30
+            },
+            {
+                "respuesta": "parmesano",
+                "pts": 20
+            },
+            {
+                "respuesta": "brie",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "animales",
+        "pregunta": "¿Cuál es un animal de granja común?",
+        "respuestas": [
+            {
+                "respuesta": "vaca",
+                "pts": 50
+            },
+            {
+                "respuesta": "cerdo",
+                "pts": 40
+            },
+            {
+                "respuesta": "pollo",
+                "pts": 30
+            },
+            {
+                "respuesta": "oveja",
+                "pts": 20
+            },
+            {
+                "respuesta": "caballo",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "música",
+        "pregunta": "¿Cuál es una canción de rock famosa?",
+        "respuestas": [
+            {
+                "respuesta": "Bohemian Rhapsody",
+                "pts": 50
+            },
+            {
+                "respuesta": "Stairway to Heaven",
+                "pts": 40
+            },
+            {
+                "respuesta": "Hotel California",
+                "pts": 30
+            },
+            {
+                "respuesta": "Sweet Child O' Mine",
+                "pts": 20
+            },
+            {
+                "respuesta": "Smoke on the Water",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "tecnología",
+        "pregunta": "¿Cuál es una empresa de videojuegos famosa?",
+        "respuestas": [
+            {
+                "respuesta": "Nintendo",
+                "pts": 50
+            },
+            {
+                "respuesta": "Sony",
+                "pts": 40
+            },
+            {
+                "respuesta": "Microsoft",
+                "pts": 30
+            },
+            {
+                "respuesta": "EA Sports",
+                "pts": 20
+            },
+            {
+                "respuesta": "Ubisoft",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "cine",
+        "pregunta": "¿Cuál es un actor famoso de Hollywood?",
+        "respuestas": [
+            {
+                "respuesta": "Tom Hanks",
+                "pts": 50
+            },
+            {
+                "respuesta": "Leonardo DiCaprio",
+                "pts": 40
+            },
+            {
+                "respuesta": "Robert De Niro",
+                "pts": 30
+            },
+            {
+                "respuesta": "Brad Pitt",
+                "pts": 20
+            },
+            {
+                "respuesta": "Johnny Depp",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "naturaleza",
+        "pregunta": "¿Cuál es una montaña famosa?",
+        "respuestas": [
+            {
+                "respuesta": "Everest",
+                "pts": 50
+            },
+            {
+                "respuesta": "K2",
+                "pts": 40
+            },
+            {
+                "respuesta": "Mont Blanc",
+                "pts": 30
+            },
+            {
+                "respuesta": "Aconcagua",
+                "pts": 20
+            },
+            {
+                "respuesta": "Kilimanjaro",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "deportes",
+        "pregunta": "¿Cuál es un deporte de contacto?",
+        "respuestas": [
+            {
+                "respuesta": "boxeo",
+                "pts": 40
+            },
+            {
+                "respuesta": "lucha libre",
+                "pts": 30
+            },
+            {
+                "respuesta": "rugby",
+                "pts": 20
+            },
+            {
+                "respuesta": "judo",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "comida",
+        "pregunta": "¿Cuál es un cereal de desayuno popular?",
+        "respuestas": [
+            {
+                "respuesta": "Corn Flakes",
+                "pts": 40
+            },
+            {
+                "respuesta": "Froot Loops",
+                "pts": 30
+            },
+            {
+                "respuesta": "Cheerios",
+                "pts": 20
+            },
+            {
+                "respuesta": "Special K",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "animales",
+        "pregunta": "¿Cuál es un animal que vive en el agua?",
+        "respuestas": [
+            {
+                "respuesta": "pez",
+                "pts": 40
+            },
+            {
+                "respuesta": "tiburón",
+                "pts": 30
+            },
+            {
+                "respuesta": "ballena",
+                "pts": 20
+            },
+            {
+                "respuesta": "pulpo",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "música",
+        "pregunta": "¿Cuál es una banda de heavy metal famosa?",
+        "respuestas": [
+            {
+                "respuesta": "Metallica",
+                "pts": 50
+            },
+            {
+                "respuesta": "Iron Maiden",
+                "pts": 40
+            },
+            {
+                "respuesta": "Black Sabbath",
+                "pts": 30
+            },
+            {
+                "respuesta": "Judas Priest",
+                "pts": 20
+            },
+            {
+                "respuesta": "Megadeth",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "tecnología",
+        "pregunta": "¿Cuál es una red social para profesionales?",
+        "respuestas": [
+            {
+                "respuesta": "LinkedIn",
+                "pts": 50
+            },
+            {
+                "respuesta": "Xing",
+                "pts": 30
+            },
+            {
+                "respuesta": "Viadeo",
+                "pts": 20
+            },
+            {
+                "respuesta": "AngelList",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "cine",
+        "pregunta": "¿Cuál es una película de terror famosa?",
+        "respuestas": [
+            {
+                "respuesta": "El Exorcista",
+                "pts": 50
+            },
+            {
+                "respuesta": "El Resplandor",
+                "pts": 40
+            },
+            {
+                "respuesta": "Pesadilla en Elm Street",
+                "pts": 30
+            },
+            {
+                "respuesta": "Halloween",
+                "pts": 20
+            },
+            {
+                "respuesta": "It",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "naturaleza",
+        "pregunta": "¿Cuál es una isla famosa?",
+        "respuestas": [
+            {
+                "respuesta": "Hawái",
+                "pts": 50
+            },
+            {
+                "respuesta": "Isla de Pascua",
+                "pts": 40
+            },
+            {
+                "respuesta": "Galápagos",
+                "pts": 30
+            },
+            {
+                "respuesta": "Bora Bora",
+                "pts": 20
+            },
+            {
+                "respuesta": "Sicilia",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "deportes",
+        "pregunta": "¿Cuál es un deporte de equipo?",
+        "respuestas": [
+            {
+                "respuesta": "fútbol",
+                "pts": 50
+            },
+            {
+                "respuesta": "baloncesto",
+                "pts": 40
+            },
+            {
+                "respuesta": "béisbol",
+                "pts": 30
+            },
+            {
+                "respuesta": "voleibol",
+                "pts": 20
+            },
+            {
+                "respuesta": "hockey",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "comida",
+        "pregunta": "¿Cuál es un vegetal verde común?",
+        "respuestas": [
+            {
+                "respuesta": "espinaca",
+                "pts": 40
+            },
+            {
+                "respuesta": "lechuga",
+                "pts": 30
+            },
+            {
+                "respuesta": "brócoli",
+                "pts": 20
+            },
+            {
+                "respuesta": "pepino",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "animales",
+        "pregunta": "¿Cuál es un animal que vive en el Ártico?",
+        "respuestas": [
+            {
+                "respuesta": "oso polar",
+                "pts": 50
+            },
+            {
+                "respuesta": "foca",
+                "pts": 40
+            },
+            {
+                "respuesta": "pingüino",
+                "pts": 30
+            },
+            {
+                "respuesta": "zorro ártico",
+                "pts": 20
+            },
+            {
+                "respuesta": "narval",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "música",
+        "pregunta": "¿Cuál es un género de música electrónica?",
+        "respuestas": [
+            {
+                "respuesta": "house",
+                "pts": 40
+            },
+            {
+                "respuesta": "techno",
+                "pts": 30
+            },
+            {
+                "respuesta": "trance",
+                "pts": 20
+            },
+            {
+                "respuesta": "dubstep",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "tecnología",
+        "pregunta": "¿Cuál es un lenguaje de programación popular?",
+        "respuestas": [
+            {
+                "respuesta": "Python",
+                "pts": 50
+            },
+            {
+                "respuesta": "Java",
+                "pts": 40
+            },
+            {
+                "respuesta": "C++",
+                "pts": 30
+            },
+            {
+                "respuesta": "JavaScript",
+                "pts": 20
+            },
+            {
+                "respuesta": "Ruby",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "cine",
+        "pregunta": "¿Cuál es una película de comedia romántica famosa?",
+        "respuestas": [
+            {
+                "respuesta": "Pretty Woman",
+                "pts": 50
+            },
+            {
+                "respuesta": "Cuando Harry encontró a Sally",
+                "pts": 40
+            },
+            {
+                "respuesta": "10 cosas que odio de ti",
+                "pts": 30
+            },
+            {
+                "respuesta": "Notting Hill",
+                "pts": 20
+            },
+            {
+                "respuesta": "La boda de mi mejor amigo",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "naturaleza",
+        "pregunta": "¿Cuál es un volcán famoso?",
+        "respuestas": [
+            {
+                "respuesta": "Vesubio",
+                "pts": 50
+            },
+            {
+                "respuesta": "Etna",
+                "pts": 40
+            },
+            {
+                "respuesta": "Krakatoa",
+                "pts": 30
+            },
+            {
+                "respuesta": "Monte Fuji",
+                "pts": 20
+            },
+            {
+                "respuesta": "Mauna Loa",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "deportes",
+        "pregunta": "¿Cuál es un deporte que se juega con una raqueta?",
+        "respuestas": [
+            {
+                "respuesta": "tenis",
+                "pts": 50
+            },
+            {
+                "respuesta": "bádminton",
+                "pts": 40
+            },
+            {
+                "respuesta": "squash",
+                "pts": 30
+            },
+            {
+                "respuesta": "ping-pong",
+                "pts": 20
+            },
+            {
+                "respuesta": "pádel",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "comida",
+        "pregunta": "¿Cuál es un condimento común?",
+        "respuestas": [
+            {
+                "respuesta": "sal",
+                "pts": 40
+            },
+            {
+                "respuesta": "pimienta",
+                "pts": 30
+            },
+            {
+                "respuesta": "mostaza",
+                "pts": 20
+            },
+            {
+                "respuesta": "ketchup",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "animales",
+        "pregunta": "¿Cuál es un animal que se encuentra en Australia?",
+        "respuestas": [
+            {
+                "respuesta": "canguro",
+                "pts": 50
+            },
+            {
+                "respuesta": "koala",
+                "pts": 40
+            },
+            {
+                "respuesta": "dingo",
+                "pts": 30
+            },
+            {
+                "respuesta": "ornitorrinco",
+                "pts": 20
+            },
+            {
+                "respuesta": "wombat",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "música",
+        "pregunta": "¿Cuál es una canción pop famosa de los 80?",
+        "respuestas": [
+            {
+                "respuesta": "Billie Jean",
+                "pts": 50
+            },
+            {
+                "respuesta": "Like a Prayer",
+                "pts": 40
+            },
+            {
+                "respuesta": "Take on Me",
+                "pts": 30
+            },
+            {
+                "respuesta": "Sweet Dreams",
+                "pts": 20
+            },
+            {
+                "respuesta": "Eye of the Tiger",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "tecnología",
+        "pregunta": "¿Cuál es un tipo de almacenamiento digital?",
+        "respuestas": [
+            {
+                "respuesta": "disco duro",
+                "pts": 40
+            },
+            {
+                "respuesta": "SSD",
+                "pts": 30
+            },
+            {
+                "respuesta": "USB",
+                "pts": 20
+            },
+            {
+                "respuesta": "nube",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "países",
+        "pregunta": "¿Cuál es uno de los países más grandes en términos de superficie?",
+        "respuestas": [
+            {
+                "respuesta": "Rusia",
+                "pts": 50
+            },
+            {
+                "respuesta": "Canadá",
+                "pts": 40
+            },
+            {
+                "respuesta": "China",
+                "pts": 30
+            },
+            {
+                "respuesta": "Estados Unidos",
+                "pts": 20
+            },
+            {
+                "respuesta": "Brasil",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "países",
+        "pregunta": "¿Cuál es un país con rojo en su bandera?",
+        "respuestas": [
+            {
+                "respuesta": "China",
+                "pts": 40
+            },
+            {
+                "respuesta": "Japón",
+                "pts": 30
+            },
+            {
+                "respuesta": "España",
+                "pts": 20
+            },
+            {
+                "respuesta": "México",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "países",
+        "pregunta": "¿Cuál es un país con azul en su bandera?",
+        "respuestas": [
+            {
+                "respuesta": "Estados Unidos",
+                "pts": 40
+            },
+            {
+                "respuesta": "Francia",
+                "pts": 30
+            },
+            {
+                "respuesta": "Reino Unido",
+                "pts": 20
+            },
+            {
+                "respuesta": "Argentina",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "países",
+        "pregunta": "¿Cuál es un país cuyo nombre empieza con la letra 'B'?",
+        "respuestas": [
+            {
+                "respuesta": "Brasil",
+                "pts": 40
+            },
+            {
+                "respuesta": "Bangladés",
+                "pts": 30
+            },
+            {
+                "respuesta": "Bélgica",
+                "pts": 20
+            },
+            {
+                "respuesta": "Bolivia",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "países",
+        "pregunta": "¿Cuál es un país cuyo nombre termina con la letra 'A'?",
+        "respuestas": [
+            {
+                "respuesta": "Argentina",
+                "pts": 40
+            },
+            {
+                "respuesta": "Australia",
+                "pts": 30
+            },
+            {
+                "respuesta": "India",
+                "pts": 20
+            },
+            {
+                "respuesta": "Canadá",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "países",
+        "pregunta": "¿Cuál es un país que tiene más de 1,000 millones de habitantes?",
+        "respuestas": [
+            {
+                "respuesta": "China",
+                "pts": 50
+            },
+            {
+                "respuesta": "India",
+                "pts": 40
+            },
+            {
+                "respuesta": "Estados Unidos",
+                "pts": 30
+            },
+            {
+                "respuesta": "Indonesia",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "países",
+        "pregunta": "¿Cuál es un país cuyo idioma oficial es el español?",
+        "respuestas": [
+            {
+                "respuesta": "México",
+                "pts": 40
+            },
+            {
+                "respuesta": "España",
+                "pts": 30
+            },
+            {
+                "respuesta": "Argentina",
+                "pts": 20
+            },
+            {
+                "respuesta": "Colombia",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "países",
+        "pregunta": "¿Cuál es un país que forma parte de la Unión Europea?",
+        "respuestas": [
+            {
+                "respuesta": "Alemania",
+                "pts": 40
+            },
+            {
+                "respuesta": "Francia",
+                "pts": 30
+            },
+            {
+                "respuesta": "Italia",
+                "pts": 20
+            },
+            {
+                "respuesta": "España",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "países",
+        "pregunta": "¿Cuál es un país que tiene una costa en el océano Atlántico?",
+        "respuestas": [
+            {
+                "respuesta": "Brasil",
+                "pts": 40
+            },
+            {
+                "respuesta": "Estados Unidos",
+                "pts": 30
+            },
+            {
+                "respuesta": "Reino Unido",
+                "pts": 20
+            },
+            {
+                "respuesta": "Argentina",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "países",
+        "pregunta": "¿Cuál es un país insular?",
+        "respuestas": [
+            {
+                "respuesta": "Japón",
+                "pts": 40
+            },
+            {
+                "respuesta": "Australia",
+                "pts": 30
+            },
+            {
+                "respuesta": "Indonesia",
+                "pts": 20
+            },
+            {
+                "respuesta": "Filipinas",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "bebés",
+        "pregunta": "¿Cuál es una de las primeras palabras que suelen decir los bebés?",
+        "respuestas": [
+            {
+                "respuesta": "mamá",
+                "pts": 50
+            },
+            {
+                "respuesta": "papá",
+                "pts": 40
+            },
+            {
+                "respuesta": "agua",
+                "pts": 30
+            },
+            {
+                "respuesta": "tata",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "bebés",
+        "pregunta": "¿Cuál es un juguete común para un bebé?",
+        "respuestas": [
+            {
+                "respuesta": "sonajero",
+                "pts": 40
+            },
+            {
+                "respuesta": "peluche",
+                "pts": 30
+            },
+            {
+                "respuesta": "bloques",
+                "pts": 20
+            },
+            {
+                "respuesta": "muñeca",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "bebés",
+        "pregunta": "¿Cuál es una comida común para bebés?",
+        "respuestas": [
+            {
+                "respuesta": "puré de manzana",
+                "pts": 40
+            },
+            {
+                "respuesta": "papilla de arroz",
+                "pts": 30
+            },
+            {
+                "respuesta": "puré de zanahoria",
+                "pts": 20
+            },
+            {
+                "respuesta": "yogur",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "bebés",
+        "pregunta": "¿Cuál es una prenda de ropa común para un bebé?",
+        "respuestas": [
+            {
+                "respuesta": "body",
+                "pts": 50
+            },
+            {
+                "respuesta": "pijama",
+                "pts": 40
+            },
+            {
+                "respuesta": "gorrito",
+                "pts": 30
+            },
+            {
+                "respuesta": "calcetines",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "bebés",
+        "pregunta": "¿Cuál es un mueble común en la habitación de un bebé?",
+        "respuestas": [
+            {
+                "respuesta": "cuna",
+                "pts": 50
+            },
+            {
+                "respuesta": "cambiador",
+                "pts": 40
+            },
+            {
+                "respuesta": "mecedora",
+                "pts": 30
+            },
+            {
+                "respuesta": "armario",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "bebés",
+        "pregunta": "¿Cuál es una actividad común que hacen los bebés?",
+        "respuestas": [
+            {
+                "respuesta": "gatear",
+                "pts": 50
+            },
+            {
+                "respuesta": "dormir",
+                "pts": 40
+            },
+            {
+                "respuesta": "comer",
+                "pts": 30
+            },
+            {
+                "respuesta": "llorar",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "bebés",
+        "pregunta": "¿Cuál es un sonido común que hace un bebé?",
+        "respuestas": [
+            {
+                "respuesta": "balbuceo",
+                "pts": 50
+            },
+            {
+                "respuesta": "risa",
+                "pts": 40
+            },
+            {
+                "respuesta": "llanto",
+                "pts": 30
+            },
+            {
+                "respuesta": "gruñido",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "bebés",
+        "pregunta": "¿Cuál es un tipo de biberón común?",
+        "respuestas": [
+            {
+                "respuesta": "con tetina de silicona",
+                "pts": 40
+            },
+            {
+                "respuesta": "antigases",
+                "pts": 30
+            },
+            {
+                "respuesta": "con tetina de látex",
+                "pts": 20
+            },
+            {
+                "respuesta": "ergonómico",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "bebés",
+        "pregunta": "¿Cuál es un color común para ropa de bebé?",
+        "respuestas": [
+            {
+                "respuesta": "rosa",
+                "pts": 40
+            },
+            {
+                "respuesta": "azul",
+                "pts": 30
+            },
+            {
+                "respuesta": "blanco",
+                "pts": 20
+            },
+            {
+                "respuesta": "amarillo",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "bebés",
+        "pregunta": "¿Cuál es un método común para calmar a un bebé?",
+        "respuestas": [
+            {
+                "respuesta": "mecerlo",
+                "pts": 50
+            },
+            {
+                "respuesta": "darle chupete",
+                "pts": 40
+            },
+            {
+                "respuesta": "cantarle",
+                "pts": 30
+            },
+            {
+                "respuesta": "llevarlo en brazos",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "bebés",
+        "pregunta": "¿Cuál es un artículo común en una bolsa de pañales?",
+        "respuestas": [
+            {
+                "respuesta": "pañales",
+                "pts": 50
+            },
+            {
+                "respuesta": "toallitas húmedas",
+                "pts": 40
+            },
+            {
+                "respuesta": "biberón",
+                "pts": 30
+            },
+            {
+                "respuesta": "manta",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "bebés",
+        "pregunta": "¿Cuál es un tipo de asiento común para bebés?",
+        "respuestas": [
+            {
+                "respuesta": "silla de auto",
+                "pts": 50
+            },
+            {
+                "respuesta": "carriola",
+                "pts": 40
+            },
+            {
+                "respuesta": "silla alta",
+                "pts": 30
+            },
+            {
+                "respuesta": "moisés",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "bebés",
+        "pregunta": "¿Cuál es un lugar común donde un bebé puede dormir?",
+        "respuestas": [
+            {
+                "respuesta": "cuna",
+                "pts": 50
+            },
+            {
+                "respuesta": "moisés",
+                "pts": 40
+            },
+            {
+                "respuesta": "carriola",
+                "pts": 30
+            },
+            {
+                "respuesta": "en brazos",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "bebés",
+        "pregunta": "¿Cuál es un momento importante en la vida de un bebé?",
+        "respuestas": [
+            {
+                "respuesta": "primeros pasos",
+                "pts": 50
+            },
+            {
+                "respuesta": "primer diente",
+                "pts": 40
+            },
+            {
+                "respuesta": "primeras palabras",
+                "pts": 30
+            },
+            {
+                "respuesta": "primer cumpleaños",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "bebés",
+        "pregunta": "¿Cuál es una marca común de pañales?",
+        "respuestas": [
+            {
+                "respuesta": "Pampers",
+                "pts": 50
+            },
+            {
+                "respuesta": "Huggies",
+                "pts": 40
+            },
+            {
+                "respuesta": "Luvs",
+                "pts": 30
+            },
+            {
+                "respuesta": "Babyganics",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "bebés",
+        "pregunta": "¿Cuál es una cosa que los bebés suelen morder?",
+        "respuestas": [
+            {
+                "respuesta": "juguete de dentición",
+                "pts": 50
+            },
+            {
+                "respuesta": "chupete",
+                "pts": 40
+            },
+            {
+                "respuesta": "mordedor",
+                "pts": 30
+            },
+            {
+                "respuesta": "ropa",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "bebés",
+        "pregunta": "¿Cuál es un lugar donde es común ver a bebés?",
+        "respuestas": [
+            {
+                "respuesta": "parque",
+                "pts": 40
+            },
+            {
+                "respuesta": "supermercado",
+                "pts": 30
+            },
+            {
+                "respuesta": "guardería",
+                "pts": 20
+            },
+            {
+                "respuesta": "clínica",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "bebés",
+        "pregunta": "¿Cuál es una cosa que un bebé necesita todos los días?",
+        "respuestas": [
+            {
+                "respuesta": "leche",
+                "pts": 50
+            },
+            {
+                "respuesta": "pañales",
+                "pts": 40
+            },
+            {
+                "respuesta": "sueño",
+                "pts": 30
+            },
+            {
+                "respuesta": "baño",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "bebés",
+        "pregunta": "¿Cuál es un juego común para bebés?",
+        "respuestas": [
+            {
+                "respuesta": "cucu-tras",
+                "pts": 40
+            },
+            {
+                "respuesta": "rueda rueda",
+                "pts": 30
+            },
+            {
+                "respuesta": "hacer caras",
+                "pts": 20
+            },
+            {
+                "respuesta": "aplaudir",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "bebés",
+        "pregunta": "¿Cuál es un artículo que se usa para bañar a un bebé?",
+        "respuestas": [
+            {
+                "respuesta": "jabón",
+                "pts": 40
+            },
+            {
+                "respuesta": "esponja",
+                "pts": 30
+            },
+            {
+                "respuesta": "toalla",
+                "pts": 20
+            },
+            {
+                "respuesta": "juguetes de baño",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona una reunión de la iglesia",
+        "respuestas": [
+            {
+                "respuesta": "dominical",
+                "pts": 40
+            },
+            {
+                "respuesta": "mutuales",
+                "pts": 30
+            },
+            {
+                "respuesta": "consejo de barrio",
+                "pts": 20
+            },
+            {
+                "respuesta": "conferencia general",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un libro del Libro de Mormón",
+        "respuestas": [
+            {
+                "respuesta": "1 Nefi",
+                "pts": 40
+            },
+            {
+                "respuesta": "2 Nefi",
+                "pts": 30
+            },
+            {
+                "respuesta": "Alma",
+                "pts": 20
+            },
+            {
+                "respuesta": "Mormón",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un profeta de la Iglesia en los últimos 100 años",
+        "respuestas": [
+            {
+                "respuesta": "Thomas S. Monson",
+                "pts": 40
+            },
+            {
+                "respuesta": "Gordon B. Hinckley",
+                "pts": 30
+            },
+            {
+                "respuesta": "Spencer W. Kimball",
+                "pts": 20
+            },
+            {
+                "respuesta": "Russell M. Nelson",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un templo en México",
+        "respuestas": [
+            {
+                "respuesta": "Ciudad de México",
+                "pts": 50
+            },
+            {
+                "respuesta": "Guadalajara",
+                "pts": 30
+            },
+            {
+                "respuesta": "Monterrey",
+                "pts": 20
+            },
+            {
+                "respuesta": "Tijuana",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un apóstol actual",
+        "respuestas": [
+            {
+                "respuesta": "Jeffrey R. Holland",
+                "pts": 40
+            },
+            {
+                "respuesta": "Dieter F. Uchtdorf",
+                "pts": 30
+            },
+            {
+                "respuesta": "David A. Bednar",
+                "pts": 20
+            },
+            {
+                "respuesta": "Quentin L. Cook",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un lugar importante en la historia de la Iglesia",
+        "respuestas": [
+            {
+                "respuesta": "Palmyra",
+                "pts": 40
+            },
+            {
+                "respuesta": "Nauvoo",
+                "pts": 30
+            },
+            {
+                "respuesta": "Kirtland",
+                "pts": 20
+            },
+            {
+                "respuesta": "Salt Lake City",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un evento importante en la historia de la Iglesia",
+        "respuestas": [
+            {
+                "respuesta": "Primera Visión",
+                "pts": 50
+            },
+            {
+                "respuesta": "Éxodo a Utah",
+                "pts": 40
+            },
+            {
+                "respuesta": "Restauración del Sacerdocio",
+                "pts": 30
+            },
+            {
+                "respuesta": "Construcción del Templo de Kirtland",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona una organización auxiliar de la Iglesia",
+        "respuestas": [
+            {
+                "respuesta": "Sociedad de Socorro",
+                "pts": 40
+            },
+            {
+                "respuesta": "Hombres Jóvenes",
+                "pts": 30
+            },
+            {
+                "respuesta": "Mujeres Jóvenes",
+                "pts": 20
+            },
+            {
+                "respuesta": "Primaria",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un manual de estudio utilizado en la Iglesia",
+        "respuestas": [
+            {
+                "respuesta": "Ven, Sígueme",
+                "pts": 50
+            },
+            {
+                "respuesta": "Predicad Mi Evangelio",
+                "pts": 30
+            },
+            {
+                "respuesta": "Principios del Evangelio",
+                "pts": 20
+            },
+            {
+                "respuesta": "Manual General",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un sacramento de la Iglesia",
+        "respuestas": [
+            {
+                "respuesta": "la Cena del Señor",
+                "pts": 50
+            },
+            {
+                "respuesta": "el Bautismo",
+                "pts": 40
+            },
+            {
+                "respuesta": "la Confirmación",
+                "pts": 30
+            },
+            {
+                "respuesta": "el Sellamiento",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona una asignación misional común",
+        "respuestas": [
+            {
+                "respuesta": "maestro de escuela dominical",
+                "pts": 40
+            },
+            {
+                "respuesta": "líder de misión de barrio",
+                "pts": 30
+            },
+            {
+                "respuesta": "consejero en la presidencia de quórum",
+                "pts": 20
+            },
+            {
+                "respuesta": "secretario de barrio",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona una festividad importante para los miembros de la Iglesia",
+        "respuestas": [
+            {
+                "respuesta": "Navidad",
+                "pts": 50
+            },
+            {
+                "respuesta": "Pascua",
+                "pts": 40
+            },
+            {
+                "respuesta": "Día de los Pioneros",
+                "pts": 30
+            },
+            {
+                "respuesta": "Conferencia General",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona una de las primeras iglesias construidas en Utah",
+        "respuestas": [
+            {
+                "respuesta": "Templo de Salt Lake",
+                "pts": 50
+            },
+            {
+                "respuesta": "Templo de St. George",
+                "pts": 40
+            },
+            {
+                "respuesta": "Templo de Logan",
+                "pts": 30
+            },
+            {
+                "respuesta": "Tabernáculo de Salt Lake",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona una ciudad en Utah que sea significativa para los SUD",
+        "respuestas": [
+            {
+                "respuesta": "Salt Lake City",
+                "pts": 50
+            },
+            {
+                "respuesta": "Provo",
+                "pts": 40
+            },
+            {
+                "respuesta": "Ogden",
+                "pts": 30
+            },
+            {
+                "respuesta": "St. George",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un principio del Evangelio",
+        "respuestas": [
+            {
+                "respuesta": "fe",
+                "pts": 40
+            },
+            {
+                "respuesta": "arrepentimiento",
+                "pts": 30
+            },
+            {
+                "respuesta": "bautismo",
+                "pts": 20
+            },
+            {
+                "respuesta": "perseverar hasta el fin",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un profeta del Libro de Mormón",
+        "respuestas": [
+            {
+                "respuesta": "Nefi",
+                "pts": 40
+            },
+            {
+                "respuesta": "Alma",
+                "pts": 30
+            },
+            {
+                "respuesta": "Mormón",
+                "pts": 20
+            },
+            {
+                "respuesta": "Moroni",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona una sección del Doctrina y Convenios que habla del sacerdocio",
+        "respuestas": [
+            {
+                "respuesta": "Sección 107",
+                "pts": 40
+            },
+            {
+                "respuesta": "Sección 20",
+                "pts": 30
+            },
+            {
+                "respuesta": "Sección 84",
+                "pts": 20
+            },
+            {
+                "respuesta": "Sección 121",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un himno SUD popular",
+        "respuestas": [
+            {
+                "respuesta": "Más cerca, Dios, de ti",
+                "pts": 50
+            },
+            {
+                "respuesta": "Soy un hijo de Dios",
+                "pts": 40
+            },
+            {
+                "respuesta": "Grande eres tú",
+                "pts": 30
+            },
+            {
+                "respuesta": "Loor al Profeta",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona una norma del librito Para la Fortaleza de la Juventud",
+        "respuestas": [
+            {
+                "respuesta": "castidad",
+                "pts": 50
+            },
+            {
+                "respuesta": "modestia",
+                "pts": 40
+            },
+            {
+                "respuesta": "honestidad",
+                "pts": 30
+            },
+            {
+                "respuesta": "diezmo",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un libro de escritura aparte del Libro de Mormón",
+        "respuestas": [
+            {
+                "respuesta": "Biblia",
+                "pts": 50
+            },
+            {
+                "respuesta": "Doctrina y Convenios",
+                "pts": 40
+            },
+            {
+                "respuesta": "La Perla de Gran Precio",
+                "pts": 30
+            },
+            {
+                "respuesta": "Guía para el Estudio de las Escrituras",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un llamamiento en la iglesia",
+        "respuestas": [
+            {
+                "respuesta": "obispo",
+                "pts": 50
+            },
+            {
+                "respuesta": "maestro de escuela dominical",
+                "pts": 40
+            },
+            {
+                "respuesta": "líder de misión de barrio",
+                "pts": 30
+            },
+            {
+                "respuesta": "presidente de estaca",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un evento importante en la vida de un miembro SUD",
+        "respuestas": [
+            {
+                "respuesta": "bautismo",
+                "pts": 50
+            },
+            {
+                "respuesta": "confirmación",
+                "pts": 40
+            },
+            {
+                "respuesta": "investidura",
+                "pts": 30
+            },
+            {
+                "respuesta": "matrimonio en el templo",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona una enseñanza del Presidente Russell M. Nelson",
+        "respuestas": [
+            {
+                "respuesta": "el poder del templo",
+                "pts": 40
+            },
+            {
+                "respuesta": "revelación personal",
+                "pts": 30
+            },
+            {
+                "respuesta": "familia centrada en Cristo",
+                "pts": 20
+            },
+            {
+                "respuesta": "gratitud",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un símbolo importante en la Iglesia SUD",
+        "respuestas": [
+            {
+                "respuesta": "templo",
+                "pts": 50
+            },
+            {
+                "respuesta": "el ángel Moroni",
+                "pts": 40
+            },
+            {
+                "respuesta": "el árbol de la vida",
+                "pts": 30
+            },
+            {
+                "respuesta": "el plan de salvación",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un grupo de edad en la iglesia",
+        "respuestas": [
+            {
+                "respuesta": "Primaria",
+                "pts": 40
+            },
+            {
+                "respuesta": "Jóvenes",
+                "pts": 30
+            },
+            {
+                "respuesta": "JAS (Jóvenes Adultos Solteros)",
+                "pts": 20
+            },
+            {
+                "respuesta": "Sociedad de Socorro",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona una canción popular de la Primaria",
+        "respuestas": [
+            {
+                "respuesta": "Soy un hijo de Dios",
+                "pts": 50
+            },
+            {
+                "respuesta": "El Espíritu Santo",
+                "pts": 40
+            },
+            {
+                "respuesta": "Las familias pueden ser eternas",
+                "pts": 30
+            },
+            {
+                "respuesta": "Sé valiente",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un libro que contenga discursos de la Conferencia General",
+        "respuestas": [
+            {
+                "respuesta": "Liahona",
+                "pts": 50
+            },
+            {
+                "respuesta": "Ensign",
+                "pts": 40
+            },
+            {
+                "respuesta": "Conferencia General",
+                "pts": 30
+            },
+            {
+                "respuesta": "Deseret News",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona una promesa del Libro de Mormón",
+        "respuestas": [
+            {
+                "respuesta": "si lees el Libro de Mormón, recibirás respuestas",
+                "pts": 50
+            },
+            {
+                "respuesta": "orar para saber la verdad",
+                "pts": 40
+            },
+            {
+                "respuesta": "obediencia trae bendiciones",
+                "pts": 30
+            },
+            {
+                "respuesta": "fortaleza espiritual",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un milagro en la historia de la Iglesia",
+        "respuestas": [
+            {
+                "respuesta": "las golondrinas en Nauvoo",
+                "pts": 50
+            },
+            {
+                "respuesta": "las crías de codornices",
+                "pts": 40
+            },
+            {
+                "respuesta": "la visión de la Primera Navidad",
+                "pts": 30
+            },
+            {
+                "respuesta": "la traducción del Libro de Mormón",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un propósito de la Sociedad de Socorro",
+        "respuestas": [
+            {
+                "respuesta": "fortalecer la fe",
+                "pts": 50
+            },
+            {
+                "respuesta": "unir a las mujeres",
+                "pts": 40
+            },
+            {
+                "respuesta": "servicio a la comunidad",
+                "pts": 30
+            },
+            {
+                "respuesta": "apoyar a las familias",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un sacramento importante que se realiza en el templo",
+        "respuestas": [
+            {
+                "respuesta": "sellamiento",
+                "pts": 50
+            },
+            {
+                "respuesta": "investidura",
+                "pts": 40
+            },
+            {
+                "respuesta": "bautismos por los muertos",
+                "pts": 30
+            },
+            {
+                "respuesta": "ordenaciones",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona una de las visitas de Cristo en las escrituras SUD",
+        "respuestas": [
+            {
+                "respuesta": "visita a los nefitas",
+                "pts": 50
+            },
+            {
+                "respuesta": "visita a los apóstoles después de la resurrección",
+                "pts": 40
+            },
+            {
+                "respuesta": "la Primera Visión",
+                "pts": 30
+            },
+            {
+                "respuesta": "el Monte de la Transfiguración",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona una dispensación en la historia de la Iglesia",
+        "respuestas": [
+            {
+                "respuesta": "dispensación de la plenitud de los tiempos",
+                "pts": 50
+            },
+            {
+                "respuesta": "dispensación de Noé",
+                "pts": 40
+            },
+            {
+                "respuesta": "dispensación de Moisés",
+                "pts": 30
+            },
+            {
+                "respuesta": "dispensación de Abraham",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona una palabra de sabiduría",
+        "respuestas": [
+            {
+                "respuesta": "abstinencia de alcohol",
+                "pts": 50
+            },
+            {
+                "respuesta": "abstinencia de tabaco",
+                "pts": 40
+            },
+            {
+                "respuesta": "café y té",
+                "pts": 30
+            },
+            {
+                "respuesta": "comer saludablemente",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona una revista oficial de la Iglesia",
+        "respuestas": [
+            {
+                "respuesta": "Liahona",
+                "pts": 50
+            },
+            {
+                "respuesta": "Ensign",
+                "pts": 40
+            },
+            {
+                "respuesta": "Friend",
+                "pts": 30
+            },
+            {
+                "respuesta": "New Era",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona una práctica común en el Día de Reposo",
+        "respuestas": [
+            {
+                "respuesta": "asistir a la iglesia",
+                "pts": 50
+            },
+            {
+                "respuesta": "leer las escrituras",
+                "pts": 40
+            },
+            {
+                "respuesta": "orar en familia",
+                "pts": 30
+            },
+            {
+                "respuesta": "evitar compras",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona una de las llaves del sacerdocio",
+        "respuestas": [
+            {
+                "respuesta": "llaves de la resurrección",
+                "pts": 50
+            },
+            {
+                "respuesta": "llaves del bautismo",
+                "pts": 40
+            },
+            {
+                "respuesta": "llaves de la investidura",
+                "pts": 30
+            },
+            {
+                "respuesta": "llaves del sellamiento",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona una asignación importante para los JAS",
+        "respuestas": [
+            {
+                "respuesta": "presidente de grupo de JAS",
+                "pts": 50
+            },
+            {
+                "respuesta": "líder de misión de barrio",
+                "pts": 40
+            },
+            {
+                "respuesta": "coordinador de actividades",
+                "pts": 30
+            },
+            {
+                "respuesta": "consejero en la presidencia de JAS",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona una función del Espíritu Santo",
+        "respuestas": [
+            {
+                "respuesta": "consolador",
+                "pts": 50
+            },
+            {
+                "respuesta": "guía",
+                "pts": 40
+            },
+            {
+                "respuesta": "testificador",
+                "pts": 30
+            },
+            {
+                "respuesta": "revelador",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona una parábola enseñada por Jesús",
+        "respuestas": [
+            {
+                "respuesta": "el buen samaritano",
+                "pts": 50
+            },
+            {
+                "respuesta": "la oveja perdida",
+                "pts": 40
+            },
+            {
+                "respuesta": "el hijo pródigo",
+                "pts": 30
+            },
+            {
+                "respuesta": "el sembrador",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un mandamiento básico en la Iglesia SUD",
+        "respuestas": [
+            {
+                "respuesta": "guardar el Día de Reposo",
+                "pts": 50
+            },
+            {
+                "respuesta": "diezmar",
+                "pts": 40
+            },
+            {
+                "respuesta": "leer las escrituras",
+                "pts": 30
+            },
+            {
+                "respuesta": "orar diariamente",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un libro de estudio para seminario o instituto",
+        "respuestas": [
+            {
+                "respuesta": "Jesucristo y el Evangelio",
+                "pts": 50
+            },
+            {
+                "respuesta": "Libro de Mormón",
+                "pts": 40
+            },
+            {
+                "respuesta": "Doctrina y Convenios",
+                "pts": 30
+            },
+            {
+                "respuesta": "Antiguo Testamento",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona una norma de dignidad en la Iglesia SUD",
+        "respuestas": [
+            {
+                "respuesta": "modestia",
+                "pts": 50
+            },
+            {
+                "respuesta": "castidad",
+                "pts": 40
+            },
+            {
+                "respuesta": "honestidad",
+                "pts": 30
+            },
+            {
+                "respuesta": "integridad",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona una ciudad mencionada en el Libro de Mormón",
+        "respuestas": [
+            {
+                "respuesta": "Jerusalén",
+                "pts": 50
+            },
+            {
+                "respuesta": "Zarahemla",
+                "pts": 40
+            },
+            {
+                "respuesta": "Abundancia",
+                "pts": 30
+            },
+            {
+                "respuesta": "Bountiful",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un aspecto importante del Plan de Salvación",
+        "respuestas": [
+            {
+                "respuesta": "la vida preterrenal",
+                "pts": 50
+            },
+            {
+                "respuesta": "la expiación de Cristo",
+                "pts": 40
+            },
+            {
+                "respuesta": "el juicio final",
+                "pts": 30
+            },
+            {
+                "respuesta": "la resurrección",
+                "pts": 20
+            }
+        ]
+    },
+    {
+        "tema": "SUD",
+        "pregunta": "Menciona un mandato de la Palabra de Sabiduría",
+        "respuestas": [
+            {
+                "respuesta": "abstenerse de alcohol",
+                "pts": 50
+            },
+            {
+                "respuesta": "abstenerse de tabaco",
+                "pts": 40
+            },
+            {
+                "respuesta": "evitar el café y el té",
+                "pts": 30
+            },
+            {
+                "respuesta": "comer en moderación",
+                "pts": 20
+            }
+        ]
+    }
+]

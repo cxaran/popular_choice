@@ -1,0 +1,77 @@
+[
+    {
+        "pregunta": "¿Qué es lo primero que se te viene a la mente al pensar en un piloto de Fórmula 1?",
+        "respuestas": [
+            {
+                "respuesta": "Velocidad",
+                "pts": 30
+            },
+            {
+                "respuesta": "Valiente",
+                "pts": 25
+            },
+            {
+                "respuesta": "Habilidad",
+                "pts": 20
+            },
+            {
+                "respuesta": "Concentración",
+                "pts": 15
+            },
+            {
+                "respuesta": "Adrenalina",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "pregunta": "¿Qué te imaginas que hace un piloto de Fórmula 1 después de ganar una carrera?",
+        "respuestas": [
+            {
+                "respuesta": "Celebra con su equipo",
+                "pts": 40
+            },
+            {
+                "respuesta": "Brinda con champagne",
+                "pts": 25
+            },
+            {
+                "respuesta": "Da una entrevista",
+                "pts": 15
+            },
+            {
+                "respuesta": "Se relaja",
+                "pts": 10
+            },
+            {
+                "respuesta": "Piensa en la próxima carrera",
+                "pts": 10
+            }
+        ]
+    },
+    {
+        "pregunta": "Si pudieras elegir un piloto de Fórmula 1 para que te dé un paseo en su auto, ¿quién sería?",
+        "respuestas": [
+            {
+                "respuesta": "Lewis Hamilton",
+                "pts": 35
+            },
+            {
+                "respuesta": "Max Verstappen",
+                "pts": 25
+            },
+            {
+                "respuesta": "Fernando Alonso",
+                "pts": 20
+            },
+            {
+                "respuesta": "Sebastian Vettel",
+                "pts": 10
+            },
+            {
+                "respuesta": "Charles Leclerc",
+                "pts": 10
+            }
+        ]
+    }
+]
