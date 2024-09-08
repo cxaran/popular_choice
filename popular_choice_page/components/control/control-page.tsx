@@ -48,15 +48,13 @@ export function ControlPage({ gameCode }: { gameCode: string }) {
                 throw new Error('Failed to fetch game status');
             }
             const data = await response.json();
-            if (data.status) {
-                if (data.status === 'disconnected' || !data.status) {
+            if (data.success) {
+                const gameInfo = data.gameInfo;
+                if (gameInfo.estado === 'disconnected' || !gameInfo.estado) {
                     setError('Conexión perdida. Por favor, recarga la página.');
                 } else {
-                    if (data.status === 'game-setup' || data.status === 'game-selection' || data.status === 'game-init' || data.status === 'game-control') {
-                        setStatus(data.status);
-                    } else {
-                        setError('Estado no válido. Por favor, recarga la página o reinicie la partida.');
-                    }
+                    setStatus(gameInfo.estado);
+                    setIsLoading(false);
                 }
             } else {
                 setError('Error al obtener el estado del juego. Intenta nuevamente.');
@@ -73,7 +71,7 @@ export function ControlPage({ gameCode }: { gameCode: string }) {
         fetchGameStatus();
     };
 
-    if (isLoading) {
+    if (isLoading || status === null) {
         return <AppLoading />;
     }
 
@@ -85,8 +83,8 @@ export function ControlPage({ gameCode }: { gameCode: string }) {
         <>
             {status === 'game-setup' && <GameSetup gameCode={gameCode} handleStatus={handleStatus} />}
             {status === 'game-selection' && <GameSelection gameCode={gameCode} handleStatus={handleStatus} />}
-            {status === 'game-init' && <GameInit />}
-            {status === 'game-control' && <GameControl />}
+            {status === 'game-init' && <GameInit gameCode={gameCode} handleStatus={handleStatus} />}
+            {status === 'game-control' && <GameControl gameCode={gameCode} handleStatus={handleStatus} />}
         </>
     );
 }

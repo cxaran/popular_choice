@@ -59,42 +59,6 @@ def validar_pregunta(pregunta):
 
     return True, ""
 
-@preguntas.route('/preguntas', methods=['POST'])
-def crear_pregunta():
-    nueva_pregunta = request.json
-    
-    # Validar la nueva pregunta
-    es_valida, mensaje = validar_pregunta(nueva_pregunta)
-    if not es_valida:
-        return jsonify({"error": mensaje}), 400
-    
-    current_app.preguntas.append(nueva_pregunta)
-    guardar_preguntas()
-    
-    return jsonify({"mensaje": "Pregunta creada exitosamente"}), 201
-
-
-@preguntas.route('/preguntas/<int:index>', methods=['PUT'])
-def editar_pregunta(index):
-    pregunta_actualizada = request.json
-    
-    # Validar la pregunta actualizada
-    es_valida, mensaje = validar_pregunta(pregunta_actualizada)
-    if not es_valida:
-        return jsonify({"error": mensaje}), 400
-    
-    preguntas = current_app.preguntas
-    
-    # Verificar que la pregunta a editar existe
-    if index < 0 or index >= len(preguntas):
-        return jsonify({"error": "Índice fuera de rango"}), 404
-
-    # Actualizar la pregunta
-    preguntas[index] = pregunta_actualizada
-    guardar_preguntas()
-
-    return jsonify({"mensaje": "Pregunta actualizada exitosamente"}), 200
-
 
 @preguntas.route('/generar-preguntas', methods=['GET'])
 def generar_preguntas():

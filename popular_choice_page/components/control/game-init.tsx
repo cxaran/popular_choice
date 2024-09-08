@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { AlertCircle, Play } from 'lucide-react'
+import { useApi } from '@/hooks/useApi';
 
 type Team = {
   name: string
@@ -13,23 +14,32 @@ type Team = {
   avatar: string
 }
 
-export function GameInit() {
+interface GameInitProps {
+  gameCode: string;
+  handleStatus: (newStatus: 'game-setup' | 'game-selection' | 'game-init' | 'game-control' | 'disconnected' | null) => void;
+}
+
+export function GameInit({ gameCode, handleStatus }: GameInitProps) {
   const router = useRouter()
-  const [teams] = useState<Team[]>([
-    { name: 'Equipo 1', color: '#FF0000', avatar: '🦁' },
-    { name: 'Equipo 2', color: '#0000FF', avatar: '🐯' }
-  ])
+  const [teams, setTeams] = useState<Team[]>([])
   const [showQuestion, setShowQuestion] = useState(false)
   const [timer, setTimer] = useState(10)
   const [questionRevealed, setQuestionRevealed] = useState(false)
   const [winningTeam, setWinningTeam] = useState<number | null>(null)
-  const [question, setQuestion] = useState("¿Cuál es la capital de Francia?")
+  const [question, setQuestion] = useState("")
+  const { apiUrl } = useApi()
 
   useEffect(() => {
     let interval: NodeJS.Timeout
     if (showQuestion && timer > 0) {
       interval = setInterval(() => {
         setTimer((prevTimer) => prevTimer - 1)
+        fetch(apiUrl + '/gameRegressive', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ code: gameCode, regresive: timer - 1 }),
+        });
+        if (timer == 1) fetchQuestion();
       }, 1000)
     } else if (timer === 0) {
       setQuestionRevealed(true)
@@ -37,17 +47,74 @@ export function GameInit() {
     return () => clearInterval(interval)
   }, [showQuestion, timer])
 
+  useEffect(() => {
+    const fetchInitialData = async () => {
+      try {
+        const response = await fetch(apiUrl + '/gameTeams', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ code: gameCode }),
+        })
+        if (!response.ok) throw new Error('Error al obtener los datos del equipo')
+        const data = await response.json()
+        if (data.success) {
+          setTeams([
+            { ...teams[0], ...data.equipos.equipo1 },
+            { ...teams[1], ...data.equipos.equipo2 },
+          ])
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchInitialData()
+  }, [apiUrl, gameCode])
+
+  const fetchQuestion = async () => {
+    try {
+      const response = await fetch(apiUrl + `/gameStatus`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ code: gameCode }),
+      });
+      if (!response.ok) {
+        throw new Error('Failed to fetch game status');
+      }
+      const data = await response.json();
+      if (data.success) {
+        const gameInfo = data.gameInfo;
+        setTeams([gameInfo.equipo1, gameInfo.equipo2]);
+        setQuestion(gameInfo.pregunta);
+      }
+    } catch (error) {
+      console.error('Error fetching game status:', error);
+    }
+  }
+
   const handleShowQuestion = () => {
     setShowQuestion(true)
+    fetch(apiUrl + '/gameRegressive', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code: gameCode, regresive: timer }),
+    });
   }
 
   const handleTeamButtonClick = (teamIndex: number) => {
     if (questionRevealed && winningTeam === null) {
-      setWinningTeam(teamIndex)
-      // Navegar a la página de control de ronda después de un breve retraso
+      setWinningTeam(teamIndex);
       setTimeout(() => {
-        router.push('/round-control')
+        handleStatus("game-control");
       }, 2000)
+      fetch(apiUrl + `/gameInitControl`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ code: gameCode, team: teamIndex }),
+      })
     }
   }
 

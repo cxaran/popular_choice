@@ -2,7 +2,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import io from 'socket.io-client';
+import { io, Socket } from 'socket.io-client';
 import { HomePage } from "@/components/home-page";
 import { TableroPage } from "@/components/tablero/tablero-page";
 import { ControlPage } from "@/components/control/control-page";
@@ -12,6 +12,7 @@ export default function Page() {
   const [gameCode, setGameCode] = useState('');
   const [mode, setMode] = useState<'null' | 'tablero' | 'control'>('null');
   const { apiUrl } = useApi()
+  const [socket, setSocket] = useState<Socket>(io(apiUrl));
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
@@ -24,32 +25,30 @@ export default function Page() {
     if (savedMode) setMode(savedMode as 'null' | 'tablero' | 'control');
     if (savedMode && savedGameCode) setGameCode(savedGameCode);
 
-    console.log("Current Mode:", mode);
-    console.log("Saved Mode:", savedMode);
-    console.log("Current GameCode:", gameCode);
-    console.log("Saved GameCode:", savedGameCode);
-
     if (savedMode != 'control') {
-      const socket = io(apiUrl);
+      const newSocket = io(apiUrl);
+      setSocket(newSocket);
 
       if (savedMode === 'tablero') {
-        socket.emit('joinGame', { code: savedGameCode });
-        socket.on('joinedBoard', (data) => {
+        newSocket.emit('joinGame', { code: savedGameCode });
+        newSocket.on('joinedBoard', (data) => {
           console.log("Board joined:", data);
         });
       } else {
-        socket.emit('generateGameCode');
-        socket.on('gameCodeGenerated', (data) => {
+        newSocket.emit('generateGameCode');
+        newSocket.on('gameCodeGenerated', (data) => {
+          console.log("Game generated:", data);
           setGameCode(data.code);
         });
 
-        socket.on('gameConnected', (data) => {
-          setMode('tablero');
+        newSocket.on('gameConnected', (data) => {
+          console.log("Game connected:", data);
+          handleModeSelect(data.code, 'tablero');
         });
       }
 
       return () => {
-        socket.disconnect();
+        newSocket.disconnect();
       };
     }
   }, []);
@@ -64,7 +63,7 @@ export default function Page() {
   return (
     <>
       {mode === 'null' && <HomePage gameCode={gameCode} onModeSelect={handleModeSelect} />}
-      {mode === 'tablero' && <TableroPage gameCode={gameCode} />}
+      {mode === 'tablero' && <TableroPage gameCode={gameCode} socketio={socket} />}
       {mode === 'control' && <ControlPage gameCode={gameCode} />}
     </>
   );

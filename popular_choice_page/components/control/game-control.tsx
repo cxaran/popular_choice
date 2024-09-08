@@ -10,6 +10,8 @@ import { AlertCircle, X, Zap, Eye, Flag, Plus, Monitor, Minus, EyeOff } from 'lu
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import confetti from 'canvas-confetti'
+import AppLoading from '../ui/loading'
+import { useApi } from '@/hooks/useApi';
 
 type Team = {
   name: string
@@ -19,59 +21,152 @@ type Team = {
 }
 
 type Answer = {
-  text: string
-  points: number
+  respuesta: string
+  pts: number
   revealed: boolean
   shownOnBoard: boolean
 }
 
 type RoundState = 'playing' | 'stealing' | 'ended'
 
-export function GameControl() {
+interface GameControlProps {
+  gameCode: string;
+  handleStatus: (newStatus: 'game-setup' | 'game-selection' | 'game-init' | 'game-control' | 'disconnected' | null) => void;
+}
+
+export function GameControl({ gameCode, handleStatus }: GameControlProps) {
   const router = useRouter()
-  const [teams, setTeams] = useState<Team[]>([
-    { name: 'Equipo 1', color: '#FF0000', score: 0, avatar: '🦁' },
-    { name: 'Equipo 2', color: '#0000FF', score: 0, avatar: '🐯' }
-  ])
+  const [teams, setTeams] = useState<Team[]>([])
   const [currentTeamIndex, setCurrentTeamIndex] = useState(0)
   const [roundScore, setRoundScore] = useState(0)
-  const [stealScore, setStealScore] = useState(0)
   const [strikes, setStrikes] = useState(0)
   const [roundState, setRoundState] = useState<RoundState>('playing')
-  const [question, setQuestion] = useState("¿Cuál es el planeta más grande del sistema solar?")
-  const [answers, setAnswers] = useState<Answer[]>([
-    { text: "Júpiter", points: 40, revealed: false, shownOnBoard: false },
-    { text: "Saturno", points: 30, revealed: false, shownOnBoard: false },
-    { text: "Neptuno", points: 15, revealed: false, shownOnBoard: false },
-    { text: "Urano", points: 10, revealed: false, shownOnBoard: false },
-    { text: "Tierra", points: 5, revealed: false, shownOnBoard: false }
-  ])
+  const [question, setQuestion] = useState("")
+  const [answers, setAnswers] = useState<Answer[]>([])
   const [showStealAnimation, setShowStealAnimation] = useState(false)
   const [showSuccessfulStealAnimation, setShowSuccessfulStealAnimation] = useState(false)
   const [isStealingPoints, setIsStealingPoints] = useState(false)
+  const [isLoading, setIsLoading] = useState(true);
+  const [isInitialDataLoaded, setIsInitialDataLoaded] = useState(false);
+  const { apiUrl } = useApi()
+
+  useEffect(() => {
+    console.log("Game Code:", gameCode);
+    const fetchGameStatus = async () => {
+      try {
+        const response = await fetch(apiUrl + `/gameStatus`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ code: gameCode }),
+        });
+        if (!response.ok) {
+          throw new Error('Failed to fetch game status');
+        }
+        const data = await response.json();
+        if (data.success) {
+          const gameInfo = data.gameInfo;
+          setTeams([gameInfo.equipo1, gameInfo.equipo2]);
+          setQuestion(gameInfo.pregunta);
+          setAnswers(gameInfo.respuestas);
+          setRoundScore(gameInfo.puntuacion_ronda);
+          setCurrentTeamIndex(gameInfo.equipo_actual);
+          setStrikes(gameInfo.strike);
+          setIsStealingPoints(gameInfo.robo_puntos);
+          setIsInitialDataLoaded(true);
+        }
+      } catch (error) {
+        console.error('Error fetching game status:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchGameStatus();
+  }, [gameCode]);
+
+  const sendGameUpdate = async () => {
+    const gameState = {
+      code: gameCode,
+      equipo1: teams[0],
+      equipo2: teams[1],
+      pregunta: question,
+      respuestas: answers,
+      puntuacion_ronda: roundScore,
+      equipo_actual: currentTeamIndex,
+      strike: strikes,
+      robo_puntos: isStealingPoints,
+    };
+
+    try {
+      const response = await fetch(apiUrl + '/updateGameBoard', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(gameState),
+      });
+      if (!response.ok) {
+        throw new Error('Error actualizando el estado del juego');
+      }
+      const data = await response.json();
+      if (data.success) {
+        console.log('Estado del juego actualizado exitosamente');
+      } else {
+        console.error('Error al actualizar el estado del juego:', data.message);
+      }
+    } catch (error) {
+      console.error('Error al enviar la actualización del juego:', error);
+    }
+  };
+
+  useEffect(() => {
+    if (isInitialDataLoaded) {
+      sendGameUpdate();
+    }
+  }, [teams, currentTeamIndex, roundScore, strikes, roundState, question, answers, isStealingPoints, isInitialDataLoaded]);
+
 
   const handleRevealAnswer = (index: number) => {
     const newAnswers = [...answers]
     if (newAnswers[index].revealed) {
-      // Deseleccionar la respuesta
-      newAnswers[index].revealed = false
-      if (isStealingPoints) {
-        setStealScore(stealScore - newAnswers[index].points)
-      } else {
-        setRoundScore(roundScore - newAnswers[index].points)
+      newAnswers[index].revealed = false;
+      newAnswers[index].shownOnBoard = false;
+      if (!isStealingPoints) {
+        setRoundScore(roundScore - newAnswers[index].pts)
+        const teamsNew = [...teams];
+        teamsNew[currentTeamIndex].score -= newAnswers[index].pts;
+        setTeams(teamsNew);
       }
     } else {
-      // Seleccionar la respuesta
-      newAnswers[index].revealed = true
-      newAnswers[index].shownOnBoard = true
+      newAnswers[index].revealed = true;
+      newAnswers[index].shownOnBoard = true;
       if (isStealingPoints) {
-        setStealScore(stealScore + newAnswers[index].points)
-        handleSuccessfulSteal(newAnswers[index].points)
+        const newScore = roundScore + newAnswers[index].pts
+        const teamsNew = [...teams];
+        const teamIndex = currentTeamIndex === 0 ? 1 : 0;
+        teamsNew[currentTeamIndex].score += newScore;
+        teamsNew[teamIndex].score -= roundScore;
+        setRoundScore(roundScore + newAnswers[index].pts)
+        setTeams(teamsNew);
+        handleSuccessfulSteal(newAnswers[index].pts)
       } else {
-        setRoundScore(roundScore + newAnswers[index].points)
+        setRoundScore(roundScore + newAnswers[index].pts)
+        const teamsNew = [...teams];
+        teamsNew[currentTeamIndex].score += newAnswers[index].pts;
+        setTeams(teamsNew);
       }
     }
     setAnswers(newAnswers)
+  }
+
+  const handleSwitchTeam = (index: number) => {
+    const teamsNew = [...teams];
+    teamsNew[index].score += roundScore;
+    teamsNew[currentTeamIndex].score -= roundScore;
+    setTeams(teamsNew);
+    setCurrentTeamIndex(index);
+    console.log(`Team ${currentTeamIndex} has changed to team ${index}`);
   }
 
   const handleShowOnBoard = (index: number) => {
@@ -108,13 +203,6 @@ export function GameControl() {
   }
 
   const handleSuccessfulSteal = (points: number) => {
-    const totalStolenPoints = stealScore + points
-    setShowSuccessfulStealAnimation(true)
-    const newTeams = [...teams]
-    newTeams[currentTeamIndex].score += totalStolenPoints
-    setTeams(newTeams)
-    setRoundScore(0)
-    setStealScore(0)
     setIsStealingPoints(false)
     setRoundState('playing')
     setStrikes(0)
@@ -126,15 +214,23 @@ export function GameControl() {
   }
 
   const handleEndRound = () => {
-    const newTeams = [...teams]
-    newTeams[currentTeamIndex].score += roundScore
-    setTeams(newTeams)
     setRoundState('ended')
   }
 
-  const handleNextRound = () => {
-    // Reset round state and navigate to question selection
-    router.push('/question-selection')
+  const handleNextRound = async () => {
+    await fetch(apiUrl + '/endRound', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ code: gameCode }),
+    })
+
+    handleStatus("game-selection");
+  }
+
+  if (isLoading) {
+    return <AppLoading />;
   }
 
   return (
@@ -165,7 +261,7 @@ export function GameControl() {
                     <span className="text-3xl font-bold" style={{ color: team.color }}>{team.score}</span>
                     {index === currentTeamIndex && (
                       <div className="text-sm font-semibold text-green-600">
-                        +{isStealingPoints ? stealScore : roundScore}
+                        +{roundScore}
                       </div>
                     )}
                   </div>
@@ -194,13 +290,13 @@ export function GameControl() {
           ))}
         </div>
 
-        <div className="flex justify-between items-center mb-6">
-          <div className="flex space-x-2">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 space-y-4 sm:space-y-0">
+          <div className="flex flex-col xs:flex-row space-y-2 xs:space-y-0 xs:space-x-2 w-full sm:w-auto">
             <Button
               onClick={handleAddStrike}
               disabled={roundState !== 'playing' || strikes >= 3 || isStealingPoints}
               variant="outline"
-              className="bg-red-100 hover:bg-red-200 text-red-600"
+              className="bg-red-100 hover:bg-red-200 text-red-600 w-full xs:w-auto"
             >
               <Plus className="mr-2 h-4 w-4" /> Agregar Strike
             </Button>
@@ -208,18 +304,27 @@ export function GameControl() {
               onClick={handleRemoveStrike}
               disabled={strikes === 0 || isStealingPoints}
               variant="outline"
-              className="bg-blue-100 hover:bg-blue-200 text-blue-600"
+              className="bg-blue-100 hover:bg-blue-200 text-blue-600 w-full xs:w-auto"
             >
               <Minus className="mr-2 h-4 w-4" /> Eliminar Strike
             </Button>
           </div>
-          <Button
-            onClick={handleStealPoints}
-            disabled={roundState !== 'stealing' || isStealingPoints}
-            className="bg-yellow-500 hover:bg-yellow-600 text-white"
-          >
-            <Zap className="mr-2 h-4 w-4" /> Robar Puntos
-          </Button>
+          <div className="flex flex-col xs:flex-row space-y-2 xs:space-y-0 xs:space-x-2 w-full sm:w-auto">
+            <Button
+              onClick={() => handleSwitchTeam(currentTeamIndex === 0 ? 1 : 0)}
+              disabled={roundState === 'stealing'}
+              className="bg-indigo-500 hover:bg-indigo-600 text-white w-full xs:w-auto"
+            >
+              Cambiar equipo en turno
+            </Button>
+            <Button
+              onClick={handleStealPoints}
+              disabled={roundState !== 'stealing' || isStealingPoints}
+              className="bg-yellow-500 hover:bg-yellow-600 text-white w-full xs:w-auto"
+            >
+              <Zap className="mr-2 h-4 w-4" /> Robar Puntos
+            </Button>
+          </div>
         </div>
 
         <Card className="mb-6">
@@ -236,13 +341,13 @@ export function GameControl() {
             <Card key={index} className={`${answer.shownOnBoard ? 'bg-gray-100' : ''}`}>
               <CardContent className="p-4">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="font-bold">{answer.revealed ? answer.text : `Respuesta ${index + 1}`}</span>
-                  <Badge>{answer.points}</Badge>
+                  <span className="font-bold">{answer.respuesta}</span>
+                  <Badge>{answer.pts}</Badge>
                 </div>
                 <div className="flex justify-between gap-2">
                   <Button
                     onClick={() => handleRevealAnswer(index)}
-                    disabled={answer.revealed || (!isStealingPoints && roundState !== 'playing')}
+                    disabled={(!isStealingPoints && roundState !== 'playing')}
                     className="flex-1 text-xs"
                     size="sm"
                   >
@@ -280,7 +385,7 @@ export function GameControl() {
         </div>
 
         <div className="flex justify-end mb-6">
-          <Button onClick={handleEndRound} variant="destructive" disabled={isStealingPoints}>
+          <Button onClick={handleEndRound} variant="destructive" >
             <Flag className="mr-2 h-4 w-4" /> Terminar Ronda
           </Button>
         </div>
@@ -327,7 +432,7 @@ export function GameControl() {
               <div className="bg-white p-8 rounded-lg text-center">
                 <h2 className="text-2xl font-bold mb-4">¡Robo Exitoso!</h2>
                 <p className="text-xl mb-4">
-                  {teams[currentTeamIndex].name} ha robado {stealScore} puntos
+                  {teams[currentTeamIndex].name} ha robado {roundScore} puntos
                 </p>
                 <Button onClick={() => setShowSuccessfulStealAnimation(false)}>Continuar</Button>
               </div>
@@ -335,6 +440,6 @@ export function GameControl() {
           )}
         </AnimatePresence>
       </div>
-    </div>
+    </div >
   )
 }

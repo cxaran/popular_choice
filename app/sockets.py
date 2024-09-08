@@ -9,7 +9,6 @@ import string
 tableros = {}
 
 def socketio_events(socketio):
-    
     @socketio.on('connect')
     def handle_connect():
         print('Cliente conectado')
@@ -26,10 +25,11 @@ def socketio_events(socketio):
     def handle_generate_game_code():
         code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
         join_room(code)
+        print(code)
         if code not in tableros:
             tableros[code] = []
         tableros[code].append(request.sid)
-        emit('gameCodeGenerated', {'code': code})
+        emit('gameCodeGenerated', {'code': code}, room= code)
         print(f'Código de juego generado: {code}')
     
     @socketio.on('joinGame')
@@ -40,7 +40,7 @@ def socketio_events(socketio):
             if code not in tableros:
                 tableros[code] = []
             tableros[code].append(request.sid)
-            emit('board_joined', {"message": f"Tablero {code} unido"}, room=code)
+            emit('board_joined', {'code': code}, room=code)
             print(f"Tablero {code} unido con SID: {request.sid}")
         else:
             emit('error', {"message": "Código no proporcionado"})

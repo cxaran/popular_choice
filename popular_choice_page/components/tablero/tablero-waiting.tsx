@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence, useAnimation } from 'framer-motion'
 import { Card, CardContent } from "@/components/ui/card"
-import { Trophy, Star, ArrowRight } from 'lucide-react'
+import { Trophy, Star, ArrowRight, RotateCcw } from 'lucide-react'
+import { Button } from '../ui/button'
 
 type Team = {
   name: string
@@ -12,18 +13,23 @@ type Team = {
   avatar: string
 }
 
-export default function TableroWaiting() {
-  const [teams, setTeams] = useState<Team[]>([
-    { name: 'Equipo Leones', color: '#FFD700', score: 120, avatar: '🦁' },
-    { name: 'Equipo Tigres', color: '#FF6B6B', score: 90, avatar: '🐯' },
-  ])
+type TableroWaitingProps = {
+  gameCode: string;
+  titulo: string | null;
+  teams: Team[];
+};
 
+export default function TableroWaiting({ gameCode, titulo, teams }: TableroWaitingProps) {
   const [leadingTeam, setLeadingTeam] = useState<Team | null>(null)
   const controls = [useAnimation(), useAnimation()]
 
   useEffect(() => {
-    const sortedTeams = [...teams].sort((a, b) => b.score - a.score)
-    setLeadingTeam(sortedTeams[0])
+    const sortedTeams = [...teams].sort((a, b) => b.score - a.score);
+    if (sortedTeams.length > 1 && sortedTeams[0].score === sortedTeams[1].score) {
+      setLeadingTeam(null);
+    } else {
+      setLeadingTeam(sortedTeams[0]);
+    }
 
     const interval = setInterval(() => {
       const randomIndex = Math.floor(Math.random() * 2)
@@ -35,6 +41,12 @@ export default function TableroWaiting() {
 
     return () => clearInterval(interval)
   }, [teams])
+
+  const handleReset = () => {
+    localStorage.clear()
+    sessionStorage.clear()
+    window.location.reload()
+  }
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -141,7 +153,7 @@ export default function TableroWaiting() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
       >
-        Tabla de Puntuaciones
+        {titulo}
       </motion.h1>
 
       <motion.div
@@ -264,6 +276,12 @@ export default function TableroWaiting() {
           ))}
         </motion.div>
       </motion.div>
+      <Button
+        onClick={handleReset}
+        className="bg-red-500 hover:bg-red-600 text-white mt-8"
+      >
+        <RotateCcw className="mr-2 h-4 w-4" /> Reiniciar Partida: {gameCode}
+      </Button>
     </div>
   )
 }

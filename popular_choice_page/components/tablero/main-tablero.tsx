@@ -1,11 +1,12 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { X, Zap, Star, Award, ChevronRight } from 'lucide-react'
+import { X, Zap, Star, Award, RotateCcw, Coins } from 'lucide-react'
 import confetti from 'canvas-confetti'
+import { Button } from "@/components/ui/button"
 
 type Team = {
   name: string
@@ -15,32 +16,45 @@ type Team = {
 }
 
 type Answer = {
-  text: string
-  points: number
+  respuesta: string
+  pts: number
   revealed: boolean
+  shownOnBoard: boolean
 }
 
-export default function MainTablero() {
-  const [teams, setTeams] = useState<Team[]>([
-    { name: 'Equipo Leones', color: '#FFD700', score: 0, avatar: '🦁' },
-    { name: 'Equipo Tigres', color: '#FF6B6B', score: 0, avatar: '🐯' }
-  ])
-  const [currentTeamIndex, setCurrentTeamIndex] = useState(0)
-  const [roundScore, setRoundScore] = useState(0)
-  const [strikes, setStrikes] = useState(0)
-  const [question, setQuestion] = useState("¿Cuál es el planeta más grande del sistema solar?")
-  const [answers, setAnswers] = useState<Answer[]>([
-    { text: "Júpiter", points: 40, revealed: false },
-    { text: "Saturno", points: 30, revealed: false },
-    { text: "Neptuno", points: 15, revealed: false },
-    { text: "Urano", points: 10, revealed: false },
-    { text: "Tierra", points: 5, revealed: false }
-  ])
-  const [isStealingPoints, setIsStealingPoints] = useState(false)
+type MainTableroProps = {
+  titulo: string | null;
+  gameCode: string;
+  teams: Team[];
+  currentTeamIndex: number;
+  roundScore: number;
+  strikes: number;
+  question: string | null;
+  answers: Answer[];
+  isStealingPoints: boolean;
+};
+
+export default function MainTablero({
+  titulo,
+  gameCode,
+  teams,
+  currentTeamIndex,
+  roundScore,
+  strikes,
+  question,
+  answers,
+  isStealingPoints,
+}: MainTableroProps) {
   const [showContent, setShowContent] = useState(false)
   const [showQuestion, setShowQuestion] = useState(false)
   const [showTitle, setShowTitle] = useState(true)
   const [showLargeQuestion, setShowLargeQuestion] = useState(false)
+  const [showStrikeAnimation, setShowStrikeAnimation] = useState(false)
+  const [showStealingAnimation, setShowStealingAnimation] = useState(false)
+  const [showStolenPointsAnimation, setShowStolenPointsAnimation] = useState(false)
+  const prevStrikes = useRef(strikes)
+  const prevIsStealingPoints = useRef(isStealingPoints)
+  const prevAnswers = useRef(answers)
 
   useEffect(() => {
     const timer1 = setTimeout(() => {
@@ -68,6 +82,54 @@ export default function MainTablero() {
       clearTimeout(timer3)
     }
   }, [])
+
+  useEffect(() => {
+    if (strikes > prevStrikes.current) {
+      setShowStrikeAnimation(true)
+      setTimeout(() => setShowStrikeAnimation(false), 2000)
+    }
+    prevStrikes.current = strikes
+  }, [strikes])
+
+  useEffect(() => {
+    if (isStealingPoints && !prevIsStealingPoints.current) {
+      setShowStealingAnimation(true)
+      const stealingConfetti = () => {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ['#FFD700', '#FFA500', '#FF4500']
+        })
+      }
+      stealingConfetti()
+      const confettiInterval = setInterval(stealingConfetti, 500)
+      setTimeout(() => {
+        clearInterval(confettiInterval)
+        setShowStealingAnimation(false)
+      }, 3000)
+    }
+    prevIsStealingPoints.current = isStealingPoints
+  }, [isStealingPoints])
+
+  useEffect(() => {
+    if (isStealingPoints) {
+      const newlyRevealedAnswer = answers.find((answer, index) =>
+        answer.revealed && !prevAnswers.current[index].revealed
+      )
+      if (newlyRevealedAnswer) {
+        setShowStolenPointsAnimation(true)
+        setTimeout(() => setShowStolenPointsAnimation(false), 2000)
+      }
+    }
+    prevAnswers.current = answers
+  }, [answers, isStealingPoints])
+
+  const handleReset = () => {
+    localStorage.clear()
+    sessionStorage.clear()
+    window.location.reload()
+  }
 
   const teamColors = ['from-yellow-400 to-orange-500', 'from-red-400 to-pink-500']
 
@@ -216,6 +278,63 @@ export default function MainTablero() {
     }
   }
 
+  const strikeAnimationVariants = {
+    hidden: { opacity: 0, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: [1, 1.2, 1],
+      transition: {
+        duration: 0.5,
+        times: [0, 0.5, 1],
+        repeat: 3,
+        repeatType: "reverse" as const
+      }
+    },
+    exit: { opacity: 0, scale: 0, transition: { duration: 0.3 } }
+  }
+
+  const stealingAnimationVariants = {
+    hidden: { opacity: 0, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        type: "spring",
+        stiffness: 300,
+        damping: 10
+      }
+    },
+    exit: { opacity: 0, scale: 0, transition: { duration: 0.3 } }
+  }
+
+  const lightningVariants = {
+    hidden: { pathLength: 0, opacity: 0 },
+    visible: {
+      pathLength: 1,
+      opacity: 1,
+      transition: {
+        pathLength: { type: "spring", duration: 1.5, bounce: 0 },
+        opacity: { duration: 0.01 }
+      }
+    }
+  }
+
+  const stolenPointsVariants = {
+    hidden: { opacity: 0, scale: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 15
+      }
+    },
+    exit: { opacity: 0, scale: 0, y: -50, transition: { duration: 0.3 } }
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 p-4 flex flex-col overflow-hidden">
       <div className="flex-grow flex flex-col max-w-7xl mx-auto w-full relative">
@@ -228,7 +347,7 @@ export default function MainTablero() {
               exit="exit"
               className="text-4xl md:text-5xl font-extrabold text-white text-center mb-4 shadow-text"
             >
-              ¡Popular Choice!
+              {titulo}
             </motion.h1>
           )}
         </AnimatePresence>
@@ -247,9 +366,9 @@ export default function MainTablero() {
                   className="text-3xl md:text-5xl font-bold text-white text-center mb-8"
                   variants={wordVariants}
                 >
-                  Pregunta:
+                  {teams[currentTeamIndex]['name'] + ':'}
                 </motion.h2>
-                {question.split(' ').map((word, index) => (
+                {(question ?? '').split(' ').map((word, index) => (
                   <motion.span
                     key={index}
                     variants={wordVariants}
@@ -263,6 +382,102 @@ export default function MainTablero() {
                   </motion.span>
                 ))}
               </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {showStrikeAnimation && (
+            <motion.div
+              variants={strikeAnimationVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-70"
+            >
+              <motion.div className="text-red-500 text-9xl font-bold flex items-center">
+                <X className="w-32 h-32" />
+                <span className="ml-4">STRIKE!</span>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {showStealingAnimation && (
+            <motion.div
+              variants={stealingAnimationVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-70"
+            >
+              <motion.div
+                className="bg-yellow-400 text-black text-6xl font-bold p-8 rounded-xl flex flex-col items-center justify-center"
+                animate={{
+                  rotate: [0, -5, 5, -5, 5, 0],
+                  scale: [1, 1.1, 1],
+                  transition: { duration: 0.5, repeat: 5, repeatType: "reverse" }
+                }}
+              >
+                <motion.svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  className="w-32 h-32 mb-4"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  fill="none"
+                >
+                  <motion.path
+                    d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"
+                    variants={lightningVariants}
+                    initial="hidden"
+                    animate="visible"
+                  />
+                </motion.svg>
+                <span className="text-shadow-lg">¡ROBO DE PUNTOS!</span>
+                <motion.div
+                  className="text-3xl mt-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  {teams[currentTeamIndex].name} está robando
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {showStolenPointsAnimation && (
+            <motion.div
+              variants={stolenPointsVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-70"
+            >
+              <motion.div
+                className="bg-green-400 text-white text-6xl font-bold p-8 rounded-xl flex flex-col items-center justify-center"
+                animate={{
+                  scale: [1, 1.1, 1],
+                  transition: { duration: 0.5, repeat: 3, repeatType: "reverse" }
+                }}
+              >
+                <Coins className="w-32 h-32 mb-4" />
+                <span className="text-shadow-lg">¡PUNTOS ROBADOS!</span>
+                <motion.div
+                  className="text-3xl mt-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  {teams[currentTeamIndex].name} roba {roundScore} puntos
+                </motion.div>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
@@ -331,7 +546,7 @@ export default function MainTablero() {
                               +{roundScore}
                             </motion.div>
                             {!isStealingPoints && (
-                              <div className="flex mt-1">
+                              <div className="flex mt-2 space-x-1">
                                 {[...Array(3)].map((_, i) => (
                                   <motion.div
                                     key={i}
@@ -341,7 +556,7 @@ export default function MainTablero() {
                                   >
                                     <Badge
                                       variant={i < strikes ? "destructive" : "outline"}
-                                      className="w-3 h-3 p-0 mr-1"
+                                      className="w-5 h-5 p-0 mr-1 rounded-full border-2 border-white"
                                     />
                                   </motion.div>
                                 ))}
@@ -435,29 +650,29 @@ export default function MainTablero() {
                                   initial="hidden"
                                   animate="visible"
                                   exit="hidden"
-                                  className={`flex items-center justify-between p-3 rounded-lg ${answer.revealed ? 'bg-green-100' : 'bg-gray-100'
+                                  className={`flex items-center justify-between p-3 rounded-lg ${answer.revealed || answer.shownOnBoard ? 'bg-green-100' : 'bg-gray-100'
                                     } hover:shadow-md transition-all duration-200 transform hover:scale-105`}
                                 >
                                   <div className="flex items-center">
                                     <motion.span
-                                      className={`w-8 h-8 flex items-center justify-center rounded-full mr-3 text-lg font-bold ${answer.revealed ? 'bg-green-500 text-white' : 'bg-blue-500 text-white'
+                                      className={`w-8 h-8 flex items-center justify-center rounded-full mr-3 text-lg font-bold ${answer.revealed || answer.shownOnBoard ? 'bg-green-500 text-white' : 'bg-blue-500 text-white'
                                         }`}
                                       variants={iconVariants}
                                     >
                                       {index + 1}
                                     </motion.span>
-                                    <span className={`text-lg ${answer.revealed ? 'font-semibold' : 'font-normal'}`}>
-                                      {answer.revealed ? answer.text : `Respuesta ${index + 1}`}
+                                    <span className={`text-lg ${answer.revealed || answer.shownOnBoard ? 'font-semibold' : 'font-normal'}`}>
+                                      {answer.revealed || answer.shownOnBoard ? answer.respuesta : `Respuesta ${index + 1}`}
                                     </span>
                                   </div>
-                                  {answer.revealed && (
+                                  {(answer.revealed || answer.shownOnBoard) && (
                                     <motion.div
                                       initial={{ scale: 0, rotate: -180 }}
                                       animate={{ scale: 1, rotate: 0 }}
                                       transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                                     >
                                       <Badge className="text-lg bg-yellow-500 text-white px-3 py-1">
-                                        {answer.points}
+                                        {answer.pts}
                                       </Badge>
                                     </motion.div>
                                   )}
@@ -467,6 +682,12 @@ export default function MainTablero() {
                           </ul>
                         </CardContent>
                       </Card>
+                      <Button
+                        onClick={handleReset}
+                        className="bg-red-500 hover:bg-red-600 text-white mt-8"
+                      >
+                        <RotateCcw className="mr-2 h-4 w-4" /> Reiniciar Partida: {gameCode}
+                      </Button>
                     </motion.div>
                   )}
                 </AnimatePresence>

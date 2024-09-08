@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
@@ -17,7 +16,7 @@ type Question = {
   tema: string
   pregunta: string
   used: boolean
-  respuestas?: { respuesta: string, pts: number }[] // Campo opcional para las respuestas
+  respuestas?: { respuesta: string, pts: number }[]
 }
 
 type Team = {
@@ -27,31 +26,32 @@ type Team = {
   avatar: string
 }
 
-interface GameSelection {
+interface GameSelectionProps {
   gameCode: string;
   handleStatus: (newStatus: 'game-setup' | 'game-selection' | 'game-init' | 'game-control' | 'disconnected' | null) => void;
 }
 
-export function GameSelection({ gameCode, handleStatus }: GameSelection) {
-  const router = useRouter()
-  const [questions, setQuestions] = useState<Question[]>([])
+export function GameSelection({ gameCode, handleStatus }: GameSelectionProps) {
   const [filteredQuestions, setFilteredQuestions] = useState<Question[]>([])
+  const [usedQuestions, setUsedQuestions] = useState<string[]>([])
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('Todas')
   const [categories, setCategories] = useState<string[]>(["Todas"])
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
-  const [teams, setTeams] = useState<Team[]>([
-
-  ])
-  const [newQuestion, setNewQuestion] = useState({ tema: '', pregunta: '' })
-  const [editQuestion, setEditQuestion] = useState<Question | null>(null)
+  const [teams, setTeams] = useState<Team[]>([])
+  const [newQuestion, setNewQuestion] = useState<Question>({
+    id: '',
+    tema: '',
+    pregunta: '',
+    used: false,
+    respuestas: [{ respuesta: '', pts: 0 }]
+  })
   const [viewResponses, setViewResponses] = useState<Question | null>(null)
   const [error, setError] = useState('')
   const [isEditingScore, setIsEditingScore] = useState(false)
   const [editedScores, setEditedScores] = useState<number[]>([])
   const [loading, setLoading] = useState(false)
-  const [isGeneratingQuestions, setIsGeneratingQuestions] = useState(false)
   const [generatedQuestions, setGeneratedQuestions] = useState<Question[]>([])
   const [topicInput, setTopicInput] = useState('')
 
@@ -60,104 +60,130 @@ export function GameSelection({ gameCode, handleStatus }: GameSelection) {
   useEffect(() => {
     const fetchInitialData = async () => {
       try {
-        setLoading(true)
+        setLoading(true);
         const response = await fetch(apiUrl + '/gameTeams', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ code: gameCode }),
-        })
-
-        if (!response.ok) throw new Error('Error al obtener los datos del equipo')
-
-        const data = await response.json()
+        });
+        if (!response.ok) throw new Error('Error al obtener los datos del equipo');
+        const data = await response.json();
+        console.log(data);
         if (data.success) {
           setTeams([
             { ...teams[0], ...data.equipos.equipo1 },
             { ...teams[1], ...data.equipos.equipo2 },
-          ])
+          ]);
+          setUsedQuestions(data.equipos.questions);
         } else {
-          setError(data.message || 'No se pudo obtener la información del equipo')
+          setError(data.message || 'No se pudo obtener la información del equipo');
         }
-
-        const categoriesResponse = await fetch(apiUrl + '/categories')
-        const categoriesData = await categoriesResponse.json()
-        setCategories(['Todas', ...categoriesData.categories])
-
-        fetchQuestions()
+        const categoriesResponse = await fetch(apiUrl + '/categories');
+        const categoriesData = await categoriesResponse.json();
+        setCategories(['Todas', ...categoriesData.categories]);
       } catch (error) {
-        setError('Ocurrió un error al intentar obtener la información inicial.')
+        setError('Ocurrió un error al intentar obtener la información inicial.');
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
+    };
+    fetchInitialData();
+  }, [apiUrl, gameCode]);
+
+  useEffect(() => {
+    if (usedQuestions.length > 0) {
+      fetchQuestions();
     }
-
-    fetchInitialData()
-  }, [apiUrl, gameCode])  // <- Eliminar `teams`
-
+  }, [usedQuestions]);
 
   const fetchQuestions = async (page = 1) => {
     try {
-      setLoading(true)
-      const response = await fetch(`${apiUrl}/questions?page=${page}&category=${selectedCategory}&search=${searchTerm}`)
-      const data = await response.json()
-      setQuestions(data.questions)
-      setFilteredQuestions(data.questions)
-      setCurrentPage(page)
-      setTotalPages(data.totalPages)
-
+      setLoading(true);
+      const response = await fetch(`${apiUrl}/questions?page=${page}&category=${selectedCategory}&search=${searchTerm}`);
+      const data = await response.json();
+      const updatedQuestions = data.questions.map((question: Question) => ({
+        ...question,
+        used: usedQuestions.includes(question.pregunta),
+      }));
+      setFilteredQuestions(updatedQuestions);
+      setCurrentPage(page);
+      setTotalPages(data.totalPages);
+      if (page > data.totalPages) {
+        fetchQuestions(1);
+      }
     } catch (error) {
-      setError('Error al cargar las preguntas')
+      setError('Error al cargar las preguntas');
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
     fetchQuestions(currentPage)
   }, [searchTerm, selectedCategory, currentPage])
 
-  const handleStartRound = (questionId: string) => {
-    const updatedQuestions = questions.map(q =>
-      q.id === questionId ? { ...q, used: true } : q
-    )
-    setQuestions(updatedQuestions)
-    setFilteredQuestions(updatedQuestions)
-    console.log(`Starting round with question ID: ${questionId}`)
-  }
-
-  const handleAddQuestion = () => {
-    if (!newQuestion.tema || !newQuestion.pregunta) {
-      setError('Por favor, completa todos los campos.')
-      return
+  const handleStartRound = (question: Question) => {
+    if (!question.tema.trim()) {
+      setError('El tema de la pregunta no puede estar vacío.');
+      return;
     }
-    const newQuestionObj: Question = {
-      id: (questions.length + 1).toString(),
-      tema: newQuestion.tema,
-      pregunta: newQuestion.pregunta,
-      used: false
+    if (!question.pregunta.trim()) {
+      setError('La pregunta no puede estar vacía.');
+      return;
     }
-    setQuestions([...questions, newQuestionObj])
-    setFilteredQuestions([...questions, newQuestionObj])
-    setNewQuestion({ tema: '', pregunta: '' })
-    setError('')
-  }
-
-  const handleEditQuestion = () => {
-    if (editQuestion) {
-      const updatedQuestions = questions.map(q => (q.id === editQuestion.id ? editQuestion : q))
-      setQuestions(updatedQuestions)
-      setFilteredQuestions(updatedQuestions)
-      setEditQuestion(null)
+    if (!question.respuestas || question.respuestas.length === 0) {
+      setError('La pregunta debe tener al menos una respuesta.');
+      return;
     }
-  }
+    for (const respuesta of question.respuestas) {
+      if (!respuesta.respuesta.trim()) {
+        setError('Todas las respuestas deben tener un texto.');
+        return;
+      }
+      if (respuesta.pts < 0) {
+        setError('Las puntuaciones deben ser mayores o iguales a 0.');
+        return;
+      }
+    }
+    setError('');
+    const payload = {
+      code: gameCode,
+      pregunta: {
+        pregunta: question.pregunta,
+        respuestas: question.respuestas
+      }
+    };
+    fetch(`${apiUrl}/gameAddQuestion`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          console.log('Pregunta agregada exitosamente:', data.message);
+          handleStatus("game-init");
+        } else {
+          setError(data.message || 'Error al agregar la pregunta.');
+          console.log(data.message || 'Error al agregar la pregunta.');
+        }
+      })
+      .catch(error => {
+        setError('Error al conectar con el servidor.');
+        console.error('Error:', error);
+      });
+  };
 
 
   const handleSaveScore = () => {
     setTeams(teams.map((team, index) => ({
       ...team,
       score: editedScores[index]
-    })))
-    setIsEditingScore(false)
+    })));
+    setIsEditingScore(false);
+    handleSetScores();
   }
 
   const handleGenerateQuestionsAI = async () => {
@@ -165,13 +191,10 @@ export function GameSelection({ gameCode, handleStatus }: GameSelection) {
       setError('Por favor, ingrese un tema para generar preguntas.')
       return
     }
-
     try {
       setLoading(true)
-      setIsGeneratingQuestions(true)
       const response = await fetch(`${apiUrl}/generar-preguntas?tema=${topicInput}`)
       const data = await response.json()
-
       if (data.preguntas) {
         setGeneratedQuestions(data.preguntas)
       } else {
@@ -184,16 +207,34 @@ export function GameSelection({ gameCode, handleStatus }: GameSelection) {
     }
   }
 
-  const handleAddGeneratedQuestion = (question: Question) => {
-    const newQuestionObj: Question = {
-      ...question,
-      id: (questions.length + 1).toString(),
-      used: false
+  const handleSetScores = async () => {
+    try {
+      const response = await fetch(`${apiUrl}/setScores`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          code: gameCode,
+          scoreFrist: editedScores[0],
+          scoreSecond: editedScores[1]
+        }),
+      })
+      if (!response.ok) {
+        throw new Error('Error al actualizar las puntuaciones')
+      }
+      const data = await response.json()
+      if (data.success) {
+        console.log('Puntuaciones actualizadas exitosamente')
+      } else {
+        console.error('Error al actualizar las puntuaciones:', data.message)
+      }
+    } catch (error) {
+      console.error('Error al enviar las puntuaciones:', error)
     }
-    setQuestions([...questions, newQuestionObj])
-    setFilteredQuestions([...questions, newQuestionObj])
-    setGeneratedQuestions(generatedQuestions.filter(q => q.id !== question.id))
+
   }
+
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-purple-500 to-pink-500 p-4 sm:p-8">
@@ -208,7 +249,7 @@ export function GameSelection({ gameCode, handleStatus }: GameSelection) {
                   <Trophy size={20} />
                   <span className="font-semibold">Puntajes</span>
                 </div>
-                <Button variant="ghost" size="sm" onClick={() => setIsEditingScore(true)}>
+                <Button variant="ghost" size="sm" onClick={() => setIsEditingScore((prev) => !prev)}>
                   <Edit size={16} />
                 </Button>
               </div>
@@ -284,18 +325,11 @@ export function GameSelection({ gameCode, handleStatus }: GameSelection) {
                   <TableCell>{question.pregunta}</TableCell>
                   <TableCell className="flex space-x-2">
                     <Button
-                      onClick={() => handleStartRound(question.id)}
+                      onClick={() => handleStartRound(question)}
                       disabled={question.used}
                       className="w-full sm:w-auto"
                     >
                       {question.used ? 'Usada' : 'Iniciar Ronda'}
-                    </Button>
-                    <Button
-                      variant="outline"
-                      onClick={() => setEditQuestion(question)}
-                      className="w-full sm:w-auto"
-                    >
-                      <Edit className="mr-2 h-4 w-4" /> Editar
                     </Button>
                     <Button
                       variant="ghost"
@@ -310,8 +344,25 @@ export function GameSelection({ gameCode, handleStatus }: GameSelection) {
             </TableBody>
           </Table>
         </div>
+        <div className="flex justify-between items-center mt-4">
+          <Button
+            onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+          >
+            Anterior
+          </Button>
+          <span>
+            Página {currentPage} de {totalPages}
+          </span>
+          <Button
+            onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+            disabled={currentPage === totalPages}
+          >
+            Siguiente
+          </Button>
+        </div>
 
-        <div className="mt-4 sm:mt-6 flex justify-between">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 space-y-4 sm:space-y-0 mt-4">
           <Dialog>
             <DialogTrigger asChild>
               <Button>
@@ -347,6 +398,49 @@ export function GameSelection({ gameCode, handleStatus }: GameSelection) {
                     placeholder="Escribe la nueva pregunta aquí"
                   />
                 </div>
+                <div>
+                  <Label>Respuestas</Label>
+                  {newQuestion.respuestas?.map((answer, index) => (
+                    <div key={index} className="flex items-center space-x-2">
+                      <Input
+                        placeholder="Respuesta"
+                        value={answer.respuesta}
+                        onChange={(e) => {
+                          const updatedRespuestas = [...newQuestion.respuestas!]
+                          updatedRespuestas[index].respuesta = e.target.value
+                          setNewQuestion({ ...newQuestion, respuestas: updatedRespuestas })
+                        }}
+                      />
+                      <Input
+                        type="number"
+                        placeholder="Puntos"
+                        value={answer.pts}
+                        onChange={(e) => {
+                          const updatedRespuestas = [...newQuestion.respuestas!]
+                          updatedRespuestas[index].pts = parseInt(e.target.value) || 0
+                          setNewQuestion({ ...newQuestion, respuestas: updatedRespuestas })
+                        }}
+                      />
+                      <Button variant="ghost" onClick={() => {
+                        const updatedRespuestas = newQuestion.respuestas!.filter((_, i) => i !== index)
+                        setNewQuestion({ ...newQuestion, respuestas: updatedRespuestas })
+                      }}>
+                        Eliminar
+                      </Button>
+                    </div>
+                  ))}
+                  <Button
+                    className="mt-4"
+                    onClick={() => {
+                      setNewQuestion({
+                        ...newQuestion,
+                        respuestas: [...newQuestion.respuestas!, { respuesta: '', pts: 0 }]
+                      })
+                    }}
+                  >
+                    Agregar Respuesta
+                  </Button>
+                </div>
                 {error && (
                   <div className="flex items-center space-x-2 text-red-500">
                     <AlertCircle size={20} />
@@ -355,7 +449,11 @@ export function GameSelection({ gameCode, handleStatus }: GameSelection) {
                 )}
               </div>
               <DialogFooter>
-                <Button onClick={handleAddQuestion}>Guardar Pregunta</Button>
+                <Button
+                  onClick={() => handleStartRound(newQuestion)}
+                >
+                  Iniciar Ronda
+                </Button>
               </DialogFooter>
             </DialogContent>
           </Dialog>
@@ -401,18 +499,11 @@ export function GameSelection({ gameCode, handleStatus }: GameSelection) {
                           <p className="mb-2">{question.pregunta}</p>
                           <div className="space-y-2">
                             <Button
-                              onClick={() => handleStartRound(question.id)}
+                              onClick={() => handleStartRound(question)}
                               disabled={question.used}
                               className="w-full"
                             >
                               {question.used ? 'Usada' : 'Iniciar Ronda'}
-                            </Button>
-                            <Button
-                              variant="outline"
-                              onClick={() => setEditQuestion(question)}
-                              className="w-full"
-                            >
-                              <Edit className="mr-2 h-4 w-4" /> Editar
                             </Button>
                             <Button
                               variant="ghost"
@@ -433,48 +524,6 @@ export function GameSelection({ gameCode, handleStatus }: GameSelection) {
         </div>
       </div>
 
-      {/* Dialogo para Editar Pregunta */}
-      <Dialog open={!!editQuestion} onOpenChange={() => setEditQuestion(null)}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Editar Pregunta</DialogTitle>
-          </DialogHeader>
-          {editQuestion && (
-            <div className="space-y-4">
-              <div>
-                <Label htmlFor="category">Categoría</Label>
-                <Select
-                  value={editQuestion.tema}
-                  onValueChange={(value) => setEditQuestion({ ...editQuestion, tema: value })}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Selecciona una categoría" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {categories.filter(category => category !== 'Todas').map((category) => (
-                      <SelectItem key={category} value={category}>{category}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-              <div>
-                <Label htmlFor="question">Pregunta</Label>
-                <Textarea
-                  id="question"
-                  value={editQuestion.pregunta}
-                  onChange={(e) => setEditQuestion({ ...editQuestion, pregunta: e.target.value })}
-                  placeholder="Escribe la nueva pregunta aquí"
-                />
-              </div>
-            </div>
-          )}
-          <DialogFooter>
-            <Button onClick={handleEditQuestion}>Guardar Cambios</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      {/* Dialogo para Ver Respuestas */}
       <Dialog open={!!viewResponses} onOpenChange={() => setViewResponses(null)}>
         <DialogContent>
           <DialogHeader>
@@ -501,5 +550,4 @@ export function GameSelection({ gameCode, handleStatus }: GameSelection) {
     </div>
   )
 
-  // agrega un dilogo para mostrar las respuestas de la ia con el unput de la categoria
 }
